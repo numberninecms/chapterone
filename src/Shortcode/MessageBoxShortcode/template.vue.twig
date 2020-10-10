@@ -1,0 +1,7 @@
+{% apply spaceless %}
+    {% verbatim %}
+<div class="alert alert-primary">
+    <PageBuilderComponent v-for="component in children" :key="component.id" :component="component" />
+</div>
+{% endverbatim %}
+{% endapply %}

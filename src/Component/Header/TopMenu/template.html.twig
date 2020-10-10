@@ -1,0 +1,13 @@
+{% if menu and menu.menuItems|length > 0 %}
+    <ul class="navbar-nav ml-auto">
+        {% for item in menu.menuItems %}
+            <li class="nav-item">
+                <a href="{{ item.url }}" class="nav-link py-1">{{ item.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <span class="navbar-text ml-auto">
+    {{ 'This menu is empty'|trans }}
+</span>
+{% endif %}

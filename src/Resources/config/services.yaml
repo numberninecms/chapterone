@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    NumberNine\ChapterOne\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Event,Model,Resources,Component/Product,ChapterOneBundle.php}'

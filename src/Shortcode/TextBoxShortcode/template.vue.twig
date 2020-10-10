@@ -1,0 +1,19 @@
+{% verbatim %}
+<div :id="'root-' + selfInstance.id" class="relative">
+    <PageBuilderStyle>
+        #root-{{ selfInstance.id }} {
+            font-size: 16px;
+        }
+        #root-{{ selfInstance.id }} .text-{{ selfInstance.id }} {
+            font-size: {{ parameters.scale }}%;
+            position: relative;
+            z-index: 10;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+    </PageBuilderStyle>
+    <div class="relative text" :class="'text-' + selfInstance.id">
+        <PageBuilderComponent v-for="component in children" :key="component.id" :component="component" />
+    </div>
+</div>
+{% endverbatim %}

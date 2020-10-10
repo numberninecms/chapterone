@@ -1,0 +1,7 @@
+{% trans_default_domain 'numbernine' %}
+{% if is_granted('Administrator') %}
+    <div class="alert-warning" role="alert">
+        <p class="font-bold">{% trans %}The following shortcode is missing implementation:{% endtrans %} {{ content }}<br>
+            <small>{% trans %}This alert is only shown to administrators.{% endtrans %}</small></p>
+    </div>
+{% endif %}

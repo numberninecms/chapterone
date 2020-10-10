@@ -1,0 +1,8 @@
+{% trans_default_domain 'ChapterOne' %}
+<div class="post-meta mb-4">
+    <p class="post-meta-info">Posted on {{ post.publishedAt|date('F jS, Y') }} by {{ post.author.username }}</p>
+    {% set tags = N9_terms_links(post, 'tag', '', {'class': 'mr-2'}) %}
+    {% if tags %}
+        <p class="post-meta-tags">Tags: {{ N9_terms_links(post, 'tag', '', {'class': 'mr-2'}) }}</p>
+    {% endif %}
+</div>

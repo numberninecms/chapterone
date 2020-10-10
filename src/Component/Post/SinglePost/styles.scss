@@ -1,0 +1,29 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.post {
+    .post-title {
+        @apply font-medium;
+    }
+
+    .post-categories {
+        a {
+            @apply text-xs uppercase #{!important};
+        }
+    }
+
+    .post-featured-image {
+        @apply relative mb-5;
+        padding-bottom: 66%;
+
+        img {
+            @apply absolute w-full h-full object-cover;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.product-meta {
+    > span {
+        @apply text-gray-500 text-sm py-2;
+
+        + span {
+            @apply border-t border-solid border-gray-200;
+        }
+    }
+}
+
+.product-big-image,
+.product-gallery {
+    .flickity-button {
+        @apply bg-transparent;
+
+        &:disabled {
+            @apply hidden;
+        }
+    }
+
+    .flickity-prev-next-button {
+        @apply opacity-0 transition-opacity duration-500 w-10 h-10;
+
+        &:hover {
+            @apply bg-transparent;
+        }
+    }
+
+    &:hover .flickity-prev-next-button {
+        @apply opacity-100;
+    }
+}
+
+.product-gallery {
+    @apply mt-2;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+
+    .gallery-cell {
+        @apply px-1 m-0;
+        max-width: 25%;
+    }
+}
+
+.gallery-cell {
+    @apply w-full;
+
+    .gallery-image {
+        @apply relative;
+        padding-bottom: 150%;
+
+        img {
+            @apply absolute w-full h-full object-cover;
+        }
+    }
+}
+
+.flickity-viewport {
+    transition: height 0.2s;
+}
+
+.pswp--visible .pswp__item {
+    opacity: 1;
+}

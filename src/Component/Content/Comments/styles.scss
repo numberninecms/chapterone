@@ -1,0 +1,49 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+#comments {
+    @apply my-5;
+
+    h3 {
+        @apply font-medium mb-4;
+    }
+
+    .avatar {
+        @apply w-12 h-12 mr-5;
+
+        img {
+            @apply w-12 h-12;
+        }
+    }
+
+    .comment {
+        @apply flex items-start;
+
+        .comment-body {
+            @apply flex-1 w-full;
+        }
+
+        .comment-content {
+            @apply overflow-hidden;
+            text-overflow: ellipsis;
+        }
+
+        .comment-info {
+            @apply flex flex-col mt-1 mb-3 text-xs;
+        }
+    }
+
+    #post-comment-form {
+        @apply bg-gray-200 p-4 my-5;
+
+        #comment_form_cancel_reply {
+            @apply mt-4 text-sm hidden;
+        }
+    }
+}

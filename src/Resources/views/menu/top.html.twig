@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary p-0">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            {% if menu and menu.menuItems|length > 0 %}
+                <ul class="navbar-nav ml-auto">
+                    {% for item in menu.menuItems %}
+                        <li class="nav-item">
+                            <a href="{{ item.url }}" class="nav-link py-1">{{ item.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <span class="navbar-text ml-auto">
+                {{ 'This menu is empty'|trans }}
+            </span>
+            {% endif %}
+        </div>
+    </div>
+</nav>

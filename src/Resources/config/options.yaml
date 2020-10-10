@@ -1,0 +1,36 @@
+options:
+    # Colors
+    colors:
+        primary: '#46A6E9'
+        secondary: '#5A5A5B'
+        tertiary: '#1A58B1'
+        quaternary: '#191919'
+        success: '#48BB78'
+        dark: '#1A202C'
+        light: '#F7FAFC'
+
+    # Site identity
+    site_favicon: ~
+
+    # Areas
+    areas:
+        header: >
+            [section backgroundSize="original" margin="0px" padding="0px 0px 0px 0px" color="light"]
+                [section backgroundSize="original" backgroundColor="#46a6e9" margin="0px" padding="5px 30px 5px 30px" color="dark"]
+                    [flex_row justify="between" align="start" margin="0 auto"]
+                        Sample content
+                        [my_account_link loggedOutText="Login / Register" loggedInText="My account"/]
+                    [/flex_row]
+                [/section]
+                [flex_row justify="center" align="center" margin="10px auto 10px auto"]
+                    [link href="http://numbernine/" title="NumberNine - The most user friendly CMS based on Symfony"]
+                        [image fromTitle="NumberNine Logo" maxWidth="581" maxHeight="131"/]
+                    [/link]
+                [/flex_row]
+                [flex_row justify="center" align="start" margin="0px auto 30px auto"]
+                    [menu id="2"/]
+                [/flex_row]
+            [/section]
+        blog_sidebar: >
+            [categories title="Categories"]
+            [recent_posts title="Recent Posts" count="10"]

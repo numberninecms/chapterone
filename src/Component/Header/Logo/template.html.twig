@@ -1,0 +1,7 @@
+<div{% if site_logo_max_width and site_logo_dark %} style="max-width: {{ site_logo_max_width }}px"{% endif %}>
+    {% if site_logo_dark %}
+        <img src="{{ site_logo_dark }}" alt="{{ site_title }}" class="img-fluid"{% if site_logo_padding %} style="padding: {{ site_logo_padding }}px"{% endif %}>
+    {% else %}
+        <h1 class="display-1">{{ site_title }}</h1>
+    {% endif %}
+</div>

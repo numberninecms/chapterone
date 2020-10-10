@@ -1,0 +1,28 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.pagination {
+    @apply flex my-5;
+
+    a {
+        @apply border border-solid px-3 py-1 mr-3;
+        color: var(--primary);
+        border-color: rgba(var(--primary-rgb), 0.7);
+
+        &.active {
+            @apply text-white;
+            background-color: var(--primary);
+        }
+
+        &:hover:not(.active) {
+            @apply text-gray-100;
+            background-color: rgba(var(--primary-rgb), 0.7);
+        }
+    }
+}

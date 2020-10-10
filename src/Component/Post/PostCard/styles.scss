@@ -1,0 +1,42 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.post-card {
+    @apply relative w-full overflow-hidden col-span-3;
+
+    .post-date {
+        @apply text-xs pb-3;
+        color: rgba(var(--secondary-rgb), 0.5);
+    }
+
+    .post-categories {
+        a {
+            @apply text-xs uppercase #{!important};
+            color: var(--primary);
+        }
+    }
+
+    .post-title {
+        @apply font-bold;
+        font-size: 0.9em;
+    }
+
+    .post-featured-image {
+        @apply relative;
+        padding-bottom: 66%;
+
+        img {
+            @apply absolute w-full h-full object-cover;
+        }
+    }
+
+    + .post-card {
+        @apply mt-10;
+    }
+}

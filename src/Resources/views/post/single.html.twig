@@ -1,0 +1,18 @@
+{#
+This is the default template used when no other template exists or when homepage isn't defined.
+#}
+
+{% extends N9_base_template() %}
+
+{% block body %}
+    <div class="container standard-container">
+        <div class="grid grid-cols-4 gap-5">
+            <main class="post-main col-span-3">
+                {{ N9_component('Post/SinglePost', {post: entity}) }}
+            </main>
+            <aside class="post-sidebar">
+                {{ N9_area('blog_sidebar') }}
+            </aside>
+        </div>
+    </div>
+{% endblock %}

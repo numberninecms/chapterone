@@ -1,0 +1,24 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.product-attribute {
+    @apply grid grid-cols-3 gap-5 border-b border-gray-200 my-0 py-3;
+
+    &:first-child {
+        @apply pt-0;
+    }
+
+    &:last-child {
+        @apply pb-0 border-none;
+    }
+
+    .name {
+        @apply font-medium;
+    }
+}

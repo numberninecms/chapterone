@@ -1,0 +1,35 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.product-card {
+    @apply relative max-w-sm overflow-hidden shadow-lg;
+
+    .product-badge {
+        @apply absolute left-0 top-0 z-10 mt-3 p-3 bg-teal-700 text-white opacity-75 pointer-events-none;
+    }
+
+    .product-categories {
+        a {
+            @apply text-sm uppercase text-gray-500 #{!important};
+        }
+    }
+
+    .product-title {
+        @apply text-teal-900;
+    }
+
+    .product-featured-image {
+        @apply relative;
+        padding-bottom: 150%;
+
+        img {
+            @apply absolute w-full h-full object-cover;
+        }
+    }
+}

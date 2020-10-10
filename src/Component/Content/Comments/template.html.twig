@@ -1,0 +1,35 @@
+{% trans_default_domain 'ChapterOne' %}
+
+{% macro comment_output(comments) %}
+    {% if comments %}
+        {% for comment in comments %}
+            <div class="comment">
+                <a href="" title="{{ comment.authorName }}" class="avatar">
+                    <img src="https://robohash.org/comment-{{ comment.id }}.png" class="flex mr-3">
+                </a>
+                <div class="comment-body">
+                    <div class="comment-content">{{ comment.content|nl2br }}</div>
+
+                    <div class="comment-info">
+                        <div>posted by {{ comment.authorName }} {{ comment.createdAt|time_ago }}</div>
+                        <div><a href="" class="btn-comment-reply-to" data-parent="{{ comment.id }}">Reply</a></div>
+                    </div>
+
+                    {{ _self.comment_output(comment.children) }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+<div id="comments">
+    <h3>{{ 'Comments'|trans }}</h3>
+
+    <div id="post-comment-form">
+        <h3>{{ 'Post a comment'|trans }}</h3>
+        {{ form(form) }}
+        <a href="" id="comment_form_cancel_reply">Cancel reply</a>
+    </div>
+
+    {{ _self.comment_output(comments) }}
+</div>

@@ -1,0 +1,63 @@
+{% trans_default_domain 'ChapterOne' %}
+<div class="product container mx-auto">
+    {{ N9_component('Breadcrumb') }}
+
+    <div class="grid grid-cols-5 gap-5 pb-5 mb-5">
+        <div class="col-span-2">
+            <div class="flex flex-col">
+                <div class="product-big-image">
+                    <div class="gallery-cell">
+                        <div class="gallery-big-image">
+                            {{ N9_featured_image(product, 'large', {class: 'w-full'}) }}
+                        </div>
+                    </div>
+                    {% for image in images %}
+                        <div class="gallery-cell">
+                            <div class="gallery-big-image">
+                                {{ N9_image(image, 'large') }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% if images|length > 0 %}
+                    <div class="product-gallery">
+                        <div class="gallery-cell">
+                            <div class="gallery-image">
+                                {{ N9_featured_image(product, 'preview') }}
+                            </div>
+                        </div>
+                        {% for image in images %}
+                            <div class="gallery-cell">
+                                <div class="gallery-image">
+                                    {{ N9_image(image, 'preview') }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-span-3">
+            <h1>{{ product.title }}</h1>
+            {{ N9_shortcode('[divider]') }}
+            <div class="text-4xl font-bold">{{ product.getPriceByCurrency(currency)|N9_price_format(currency) }}</div>
+
+            <div class="mt-3">
+                <a class="btn btn-primary" href="">{% trans %}Add to cart{% endtrans %}</a>
+            </div>
+
+            <div class="product-meta flex flex-col mt-5">
+                <span class="posted-in">
+                    {% trans %}Category:{% endtrans %}
+                    {{ N9_terms_links(product, 'product_category') }}
+                </span>
+                <span class="tagged-as">
+                    {% trans %}Tags:{% endtrans %}
+                    {{ N9_terms_links(product, 'product_tag') }}
+                </span>
+            </div>
+        </div>
+    </div>
+    {{ N9_component('Product/ProductSections', {product: product}) }}
+</div>

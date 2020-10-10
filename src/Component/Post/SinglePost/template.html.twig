@@ -1,0 +1,25 @@
+{% trans_default_domain 'ChapterOne' %}
+<div class="post">
+    <div class="post-categories">
+        {{ N9_terms_links(post, 'category') }}
+    </div>
+    <h1 class="post-title">{{ post.title }}</h1>
+    {{ N9_shortcode('[divider]') }}
+    {{ N9_component('Post/Partial/PostMeta', {post: post}) }}
+
+    {% if post.featuredImage %}
+        <div class="post-featured-image mb-5">
+            {{ N9_featured_image(post, 'large') }}
+        </div>
+    {% endif %}
+
+    {{ post.content|raw }}
+</div>
+
+<div class="mt-5">
+    {{ N9_shortcode('[divider align="center"]') }}
+    {{ N9_component('Content/SocialLinks', {contentEntity: post}) }}
+</div>
+
+{{ N9_component('Post/Partial/PostNavigation', {post: post}) }}
+{{ N9_component('Content/Comments', {contentEntity: post}) }}

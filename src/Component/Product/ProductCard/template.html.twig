@@ -1,0 +1,22 @@
+<div class="product-card">
+    <div class="product-featured-image">
+        <a href="{{ N9_entity_url(product) }}">
+            {{ N9_featured_image(product, 'medium') }}
+        </a>
+    </div>
+
+    <div class="product-badge">
+        <div class="badge callout badge-square">
+            <div class="badge-inner callout-new-bg is-small new-bubble">NEW</div>
+        </div>
+    </div>
+
+    <div class="px-6 py-4 text-center">
+        <div class="product-categories">
+            {{ N9_terms_links(product, 'product_category') }}
+        </div>
+
+        {{ N9_entity_link(product, {class: 'product-title'}) }}
+        <p class="font-bold">{{ product.getPriceByCurrency(currency)|N9_price_format(currency) }}</p>
+    </div>
+</div>

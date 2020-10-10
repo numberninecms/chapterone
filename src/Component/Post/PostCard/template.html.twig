@@ -1,0 +1,25 @@
+<div class="post-card grid grid-cols-{{ post.featuredImage ? 3 : 2 }}">
+    {% if post.featuredImage %}
+        <div class="post-featured-image">
+            <a href="{{ N9_entity_url(post) }}">
+                {{ N9_featured_image(post, 'medium') }}
+            </a>
+        </div>
+    {% endif %}
+
+    <div class="px-6 col-span-2">
+        <div class="post-categories">
+            {{ N9_terms_links(post, 'category') }}
+        </div>
+
+        <h2>{{ N9_entity_link(post, {class: 'post-title'}) }}</h2>
+        {{ N9_shortcode('[divider color="primary" height="1" margin="0.8"]') }}
+        <div class="post-date">
+            {{ post.publishedAt|date('F jS, Y') }}
+        </div>
+        <div>
+            {{ excerpt }}<br>
+            {{ N9_entity_link(post, {}, 'Read more...') }}
+        </div>
+    </div>
+</div>

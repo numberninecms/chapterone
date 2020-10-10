@@ -1,0 +1,5 @@
+<div class="container mx-auto grid grid-cols-{{ columns }} gap-5">
+    {% for product in products %}
+        {{ N9_component('Product/ProductCard', {product: product}) }}
+    {% endfor %}
+</div>

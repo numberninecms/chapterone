@@ -1,0 +1,28 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.pswp__item {
+    transition: opacity .5s;
+    opacity: 0;
+}
+
+.pswp--visible .pswp__item {
+    opacity: 1;
+}
+
+.pswp__img--placeholder--blank {
+    background-color: transparent !important;
+}
+
+.pswp {
+    img {
+        transition: opacity .5s;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="generator" content="NumberNine"/>
+    {% block head %}
+        {{ N9_head() }}
+    {% endblock %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:bold|Heebo">
+</head>
+<body class="{{ N9_dispatch('BodyClasses')|join(' ') }}">
+{% block header %}
+    <header>
+        {{ N9_area('header') }}
+    </header>
+{% endblock %}
+
+{% block body %}{% endblock %}
+
+{% block footer %}
+    {{ N9_component('Footer/Footer') }}
+    {{ N9_footer() }}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,8 @@
+<div class="grid grid-cols-{{ widgets|N9_existing_widgets|length }} gap-4">
+    {% for widget in widgets|N9_existing_widgets %}
+        <div class="widget widget_{{ widget.name }}">
+            <h3>{{ N9_widget_title(widget) }}</h3>
+            {{ N9_widget(widget) }}
+        </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,28 @@
+{% extends N9_base_template() %}
+
+{% block head %}
+    {{ parent() }}
+    {{ N9_theme_assets('shop') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container standard-container">
+        <div class="grid grid-cols-4 gap-5">
+            <aside class="shop-sidebar">
+                {{ N9_area('shop_sidebar') }}
+            </aside>
+            <main class="shop-main col-span-3">
+                {% set offset = entities.query.firstResult + 1 %}
+                <div class="flex flex-row justify-end items-center mb-3">
+                    <div class="mr-5">Showing {{ offset }} – {{ offset + entities.query.maxResults - 1 }} of {{ entities.count }} results</div>
+                    {{ N9_products_sort_filter() }}
+                </div>
+                <div class="grid grid-cols-3 gap-5">
+                    {% for product in entities %}
+                        {{ N9_component('Product/ProductCard', {product: product}) }}
+                    {% endfor %}
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

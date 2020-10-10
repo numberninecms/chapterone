@@ -1,0 +1,7 @@
+{% verbatim %}
+<div class="flex w-full container standard-container"
+     :class="['justify-' + parameters.justify, 'items-' + parameters.align]"
+     :style="{padding: parameters.padding, margin: parameters.margin}">
+    <PageBuilderComponent v-for="component in children" :key="component.id" :component="component" />
+</div>
+{% endverbatim %}

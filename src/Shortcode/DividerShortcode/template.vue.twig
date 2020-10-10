@@ -1,0 +1,5 @@
+{% verbatim %}
+<div class="flex" :class="{'justify-start': parameters.align === 'left', 'justify-center': parameters.align === 'center', 'justify-end': parameters.align === 'right'}">
+    <div class="divider" :style="{height: parameters.height+'px', maxWidth: parameters.fullWidth ? '100%' : parameters.width+'px', marginBottom: parameters.margin+'em', marginTop: parameters.margin+'em'}"></div>
+</div>
+{% endverbatim %}

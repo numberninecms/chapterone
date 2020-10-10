@@ -1,0 +1,35 @@
+{
+  "entrypoints": {
+    "main": {
+      "js": [
+        "/bundles/numberninechapterone/build/runtime.d3a5a005.js",
+        "/bundles/numberninechapterone/build/2.a540eba0.js",
+        "/bundles/numberninechapterone/build/main.f9ea17fe.js"
+      ],
+      "css": [
+        "/bundles/numberninechapterone/build/2.a3dda110.css",
+        "/bundles/numberninechapterone/build/main.5e75d588.css"
+      ]
+    },
+    "product": {
+      "js": [
+        "/bundles/numberninechapterone/build/runtime.d3a5a005.js",
+        "/bundles/numberninechapterone/build/1.ada9bcdd.js",
+        "/bundles/numberninechapterone/build/product.d94524a9.js"
+      ],
+      "css": [
+        "/bundles/numberninechapterone/build/1.cb7959ae.css"
+      ]
+    },
+    "shop": {
+      "js": [
+        "/bundles/numberninechapterone/build/runtime.d3a5a005.js",
+        "/bundles/numberninechapterone/build/0.e1885b47.js",
+        "/bundles/numberninechapterone/build/shop.025d2915.js"
+      ],
+      "css": [
+        "/bundles/numberninechapterone/build/0.7e73c526.css"
+      ]
+    }
+  }
+}

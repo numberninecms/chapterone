@@ -1,0 +1,77 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.menu {
+    @apply flex flex-row p-3;
+
+    .menu-item-top-level {
+        @apply py-3 px-2 text-quaternary text-sm;
+
+        > a {
+            @apply uppercase font-bold text-quaternary relative py-3;
+
+            &:before {
+                @apply absolute top-0 w-0 transition-all duration-300 opacity-0;
+                content: " ";
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--primary);
+                height: 3px;
+            }
+        }
+
+        &:hover {
+            > a {
+                &:before {
+                    opacity: 1;
+                    width: 100%;
+                }
+            }
+
+            .menu-dropdown {
+                @apply flex;
+            }
+        }
+    }
+
+    .menu-item:not(.menu-item-top-level) {
+        @apply flex flex-1;
+
+        > a {
+            @apply text-secondary w-full flex-1 p-2;
+
+            &:hover {
+                @apply bg-primary text-white;
+            }
+        }
+    }
+
+    .menu-dropdown {
+        @apply absolute z-10 flex-col bg-white p-5 text-quaternary text-sm border border-gray-400 shadow mt-3 hidden;
+        transform: translateX(-40%);
+    }
+
+    &.mega-menu {
+        .menu-dropdown {
+            @apply flex-row;
+
+            ul {
+                @apply flex flex-col;
+            }
+        }
+
+        .menu-item-col-header {
+            @apply flex flex-col items-start;
+
+            > a {
+                @apply uppercase font-bold flex-initial;
+            }
+        }
+    }
+}

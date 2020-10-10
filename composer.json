@@ -1,0 +1,60 @@
+{
+    "name": "numberninecms/chapterone",
+    "description": "ChapterOne is a full-featured starter theme for NumberNine CMS",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "William Arin",
+            "email": "williamarin.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "numberninecms/cms": "*@dev",
+        "numberninecms/faker": "*@dev",
+        "symfony/form": "^5.1",
+        "symfony/security-core": "^5.1",
+        "symfony/security-csrf": "^5.1",
+        "symfony/security-http": "^5.1",
+        "doctrine/doctrine-bundle": "^2.0",
+        "doctrine/orm": "^2.7",
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
+        "symfony/http-foundation": "^5.1",
+        "symfony/event-dispatcher": "^5.1"
+    },
+    "require-dev": {
+        "phpro/grumphp": "^0.18.0",
+        "phpstan/phpstan": "^0.12.25",
+        "phpstan/phpstan-doctrine": "^0.12.13",
+        "phpstan/phpstan-phpunit": "^0.12.8",
+        "phpstan/phpstan-symfony": "^0.12.6",
+        "friendsoftwig/twigcs": "^3.2",
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "NumberNine\\ChapterOne\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../cms",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../faker",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "minimum-stability": "stable"
+}

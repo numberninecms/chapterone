@@ -1,0 +1,12 @@
+twig:
+    form_themes: ['@ChapterOne/form/tailwind_layout.html.twig']
+
+framework:
+    assets:
+        packages:
+            chapterone:
+                json_manifest_path: '%kernel.project_dir%/public/bundles/numberninechapterone/build/manifest.json'
+
+webpack_encore:
+    builds:
+        chapterone: '%kernel.project_dir%/public/bundles/numberninechapterone/build/'

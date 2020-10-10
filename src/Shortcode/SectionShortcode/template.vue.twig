@@ -1,0 +1,17 @@
+{% verbatim %}
+<section class="section"
+         :class="parameters.color"
+         :style="{padding: parameters.padding, margin: parameters.margin}">
+    <div
+        class="section-background"
+        :style="{
+            backgroundColor: parameters.backgroundColor,
+            backgroundImage: 'url(' + parameters.background + ')',
+            backgroundPosition: parameters.backgroundPosition
+        }">
+    </div>
+    <div class="section-content">
+        <PageBuilderComponent v-for="component in children" :key="component.id" :component="component" />
+    </div>
+</section>
+{% endverbatim %}

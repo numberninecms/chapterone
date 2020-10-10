@@ -1,0 +1,11 @@
+<aside class="grid grid-cols-1 gap-6">
+    {% for widget in widgets|N9_existing_widgets %}
+        {% set content = N9_widget(widget) %}
+        {% if content %}
+            <section class="widget widget_{{ widget.name }}">
+                <h3>{{ N9_widget_title(widget) }}</h3>
+                {{ content|raw }}
+            </section>
+        {% endif %}
+    {% endfor %}
+</aside>

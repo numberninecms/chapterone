@@ -1,0 +1,16 @@
+{% extends N9_base_template() %}
+
+{% block body %}
+    <div class="container standard-container">
+        <div class="grid grid-cols-4 gap-5">
+            <main class="blog-main col-span-3">
+                {% for post in entities %}
+                    {{ N9_component('Post/PostCard', {post: post}) }}
+                {% endfor %}
+            </main>
+            <aside class="blog-sidebar">
+                {{ N9_area('blog_sidebar') }}
+            </aside>
+        </div>
+    </div>
+{% endblock %}

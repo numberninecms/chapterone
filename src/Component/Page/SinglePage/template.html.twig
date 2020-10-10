@@ -1,0 +1,21 @@
+{% trans_default_domain 'ChapterOne' %}
+<div class="page">
+    <div class="page-categories">
+        {{ N9_terms_links(page, 'category') }}
+    </div>
+    <h1 class="page-title">{{ page.title }}</h1>
+    {{ N9_shortcode('[divider]') }}
+
+    {% if page.featuredImage %}
+        <div class="page-featured-image mb-5">
+            {{ N9_featured_image(page, 'original') }}
+        </div>
+    {% endif %}
+
+    {{ page.content|raw }}
+</div>
+
+<div class="mt-5">
+    {{ N9_shortcode('[divider align="center"]') }}
+    {{ N9_component('Content/SocialLinks', {contentEntity: page}) }}
+</div>

@@ -1,0 +1,23 @@
+{% macro render_menu_items(menuItems, level) %}
+    {% for item in menuItems %}
+        <li class="menu-item{% if level == 1 %} menu-item-top-level{% elseif level == 2 %} menu-item-col-header{% endif %}">
+            {% if item.link %}
+                <a href="{{ item.link }}">{{ item.title }}</a>
+            {% else %}
+                {{ item.title }}
+            {% endif %}
+
+            {% if item.children|length > 0 %}
+                <ul class="{% if level == 1 %}menu-dropdown{% endif %}">
+                    {{ _self.render_menu_items(item.children, level + 1) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+{% if menuItems|length > 0 %}
+    <ul class="menu{% if depth >= 3 %} mega-menu{% endif %}">
+        {{ _self.render_menu_items(menuItems, 1) }}
+    </ul>
+{% endif %}

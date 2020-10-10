@@ -1,0 +1,18 @@
+---
+template: Page - Left sidebar
+---
+{% extends N9_base_template() %}
+
+{% block body %}
+    <div class="container standard-container">
+        <div class="grid grid-cols-4 gap-5">
+            <aside class="post-sidebar">
+                {{ N9_area('blog_sidebar') }}
+            </aside>
+            <main class="page-main col-span-3">
+                {{ N9_component('Page/SinglePage', {page: entity}) }}
+            </main>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,16 @@
+<div class="flex justify-between">
+    <div>
+        {% if previousPost %}
+            <a href="{{ N9_entity_url(previousPost) }}" class="flex-row-centered">
+                <i class="fas fa-chevron-left mr-3"></i> {{ previousPost.title }}
+            </a>
+        {% endif %}
+    </div>
+    <div>
+        {% if nextPost %}
+            <a href="{{ N9_entity_url(nextPost) }}" class="flex-row-centered">
+                {{ nextPost.title }} <i class="fas fa-chevron-right ml-3"></i>
+            </a>
+        {% endif %}
+    </div>
+</div>

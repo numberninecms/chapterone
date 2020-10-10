@@ -1,0 +1,10 @@
+<div>
+    <h3>{{ title }}</h3>
+    <ul class="list-unstyled">
+        {% for post in posts %}
+            <li class="mb-2">
+                <a href="{{ N9_entity_url(post) }}">{{ post.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

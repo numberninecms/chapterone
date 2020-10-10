@@ -1,0 +1,9 @@
+{% verbatim %}
+<div class="container mx-auto">
+    <div :class="'flex-' + parameters.type">
+        <div class="flex" :class="['justify-' + parameters.justify, 'items-' + parameters.align]">
+            <PageBuilderComponent v-for="component in children" :key="component.id" :component="component" />
+        </div>
+    </div>
+</div>
+{% endverbatim %}

@@ -1,0 +1,5 @@
+:root {
+{% if primary_color is defined %} --primary-rgb: {{ N9_hex_to_rgb(primary_color)|raw }};
+{% endif %}{% if secondary_color is defined %} --secondary-rgb: {{ N9_hex_to_rgb(secondary_color)|raw }};
+{% endif %}
+}

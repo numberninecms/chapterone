@@ -1,0 +1,51 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.title {
+    @apply relative flex flex-row flex-wrap items-center justify-center w-full uppercase;
+
+    &.title-center {
+        @apply relative overflow-hidden;
+
+        span {
+            @apply relative px-3 inline-block align-baseline;
+
+            &:before, &:after {
+                @apply block absolute;
+                border-top: 2px solid #555;
+                opacity: 0.1;
+                width: 1000px;
+                content: '';
+                top: 50%;
+            }
+
+            &:before {
+                right: 100%;
+            }
+
+            &:after {
+                left: 100%;
+            }
+        }
+    }
+}
+
+.title-content {
+    @apply uppercase;
+
+    &:before {
+        content: "";
+        display: block;
+        -ms-flex: 1;
+        flex: 1;
+        height: 2px;
+        opacity: .1;
+        background-color: currentColor;
+    }
+}

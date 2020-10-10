@@ -1,0 +1,12 @@
+{% extends N9_base_template() %}
+
+{% block head %}
+    {{ parent() }}
+    {{ N9_theme_assets('product') }}
+{% endblock %}
+
+{% block body %}
+    <main class="page-main">
+        {{ N9_component('Product/SingleProduct', {product: entity}) }}
+    </main>
+{% endblock %}

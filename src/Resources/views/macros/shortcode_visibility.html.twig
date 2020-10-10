@@ -1,0 +1,8 @@
+{% macro shortcode_visibility %}
+    {%- if visibility is defined -%}
+        hidden
+        {%- for size in visibility -%}
+            {{ size }}:visible
+        {%- endfor -%}
+    {%- endif -%}
+{% endmacro %}

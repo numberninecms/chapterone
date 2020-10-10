@@ -1,0 +1,81 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+:root {
+    --light-blue-rgb: 70, 166, 233;
+    --light-blue: rgb(var(--light-blue-rgb));
+
+    --dark-blue-rgb: 26, 88, 177;
+    --dark-blue: rgb(var(--dark-blue-rgb));
+
+    --light-gray-rgb: 90, 90, 91;
+    --light-gray: rgb(var(--light-gray-rgb));
+
+    --dark-gray-rgb: 25, 25, 25;
+    --dark-gray: rgb(var(--dark-gray-rgb));
+
+    --primary-rgb: var(--light-blue-rgb);
+    --primary: rgb(var(--primary-rgb));
+
+    --secondary-rgb: var(--light-gray-rgb);
+    --secondary: rgb(var(--secondary-rgb));
+
+    --tertiary-rgb: var(--dark-blue-rgb);
+    --tertiary: rgb(var(--tertiary-rgb));
+
+    --quaternary-rgb: var(--dark-gray-rgb);
+    --quaternary: rgb(var(--quaternary-rgb));
+
+    --light-rgb: 243, 243, 243;
+    --light: rgb(var(--light-rgb));
+
+    --dark-rgb: var(--quaternary-rgb);
+    --dark: rgb(var(--dark-rgb));
+}
+
+.bg-black-opacity-25 {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.text-secondary {
+    color: var(--secondary);
+}
+
+.text-tertiary {
+    color: var(--tertiary);
+}
+
+.text-quaternary {
+    color: var(--quaternary);
+}
+
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.bg-secondary {
+    background-color: var(--secondary);
+}
+
+.bg-tertiary {
+    background-color: var(--tertiary);
+}
+
+.bg-quaternary {
+    background-color: var(--quaternary);
+}
+
+.border-primary {
+    border-color: var(--primary);
+}
+

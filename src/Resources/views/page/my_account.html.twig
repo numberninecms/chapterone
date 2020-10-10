@@ -1,0 +1,23 @@
+{% extends N9_base_template() %}
+
+{% block body %}
+    <div class="container standard-container">
+        <main class="page-main w-full">
+            <h1>My account</h1>
+            <div class="grid grid-cols-2 gap-5">
+                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <div class="login pr-5 border-r border-gray-300">
+                        <h2>Login</h2>
+                        {{ N9_component('Account/LoginForm') }}
+                    </div>
+                    <div class="register">
+                        <h2>Register</h2>
+                        {{ N9_component('Account/RegistrationForm') }}
+                    </div>
+                {% else %}
+                    {{ N9_component('Account/LoginForm') }}
+                {% endif %}
+            </div>
+        </main>
+    </div>
+{% endblock %}

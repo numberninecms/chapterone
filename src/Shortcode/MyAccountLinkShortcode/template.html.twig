@@ -1,0 +1,7 @@
+<a href="{{ N9_path(PAGE_FOR_MY_ACCOUNT) }}">
+    {%- if is_granted('IS_AUTHENTICATED_REMEMBERED') -%}
+        {{ loggedInText|trans }}
+    {%- else -%}
+        {{ loggedOutText|trans }}
+    {%- endif -%}
+</a>

@@ -1,0 +1,10 @@
+{% for section in sections %}
+    <div class="product-section">
+        <div class="product-section-name">
+            {{ section.name }}
+        </div>
+        <div class="col-span-5">
+            {{ N9_component('Product/Section/' ~ section.component, {product: product}) }}
+        </div>
+    </div>
+{% endfor %}

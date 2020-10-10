@@ -1,0 +1,22 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.section {
+    @apply relative w-full flex-row items-center;
+    padding: 30px 0;
+}
+
+.section-background {
+    @apply absolute h-full top-0 right-0 left-0 bottom-0 bg-cover;
+}
+
+.section-content {
+    @apply relative w-full;
+    z-index: 1;
+}
