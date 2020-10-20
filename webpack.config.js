@@ -1,5 +1,4 @@
 const Encore = require('@symfony/webpack-encore');
-const WebpackShellPlugin = require('webpack-shell-plugin');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
@@ -31,24 +30,15 @@ Encore
         exclude: /node_modules/,
         loader: 'eslint-loader',
     })
-    .enablePostCssLoader(function (options) {
-        options.plugins = function () {
-            return [
+    .enablePostCssLoader((options) => {
+        options.postcssOptions = {
+            plugins: [
                 require('tailwindcss'),
                 require('autoprefixer'),
             ]
         }
     })
     .autoProvidejQuery()
-// .addPlugin(new WebpackShellPlugin({
-//     onBuildStart: [
-//         'yarn rimraf ./src/Resources/public/build/ --preserve-root',
-//     ],
-//     onBuildEnd: [
-//         "yarn replace-in-file /build/g bundles/numberninechapterone/build ./build/manifest.json,./build/entrypoints.json --isRegex",
-//         'yarn cpy ./build ./src/Resources/public/ --parents',
-//     ]
-// }))
 ;
 
 module.exports = Encore.getWebpackConfig();
