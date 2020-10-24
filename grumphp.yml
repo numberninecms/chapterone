@@ -13,6 +13,7 @@ grumphp:
             type_scope_conventions:
                 types:
                     - build
+                    - chore
                     - ci
                     - docs
                     - feat
