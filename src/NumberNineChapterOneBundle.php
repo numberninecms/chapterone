@@ -10,7 +10,7 @@
 
 namespace NumberNine\ChapterOne;
 
-use NumberNine\Model\Bundle\Bundle;
+use NumberNine\Common\Bundle\Bundle;
 
 class NumberNineChapterOneBundle extends Bundle
 {

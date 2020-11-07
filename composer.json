@@ -21,6 +21,7 @@
         "php": "^7.4",
         "numberninecms/cms": "dev-develop",
         "numberninecms/faker": "dev-develop",
+        "numberninecms/common": "dev-develop",
         "symfony/form": "^5.1",
         "symfony/security-core": "^5.1",
         "symfony/security-csrf": "^5.1",
