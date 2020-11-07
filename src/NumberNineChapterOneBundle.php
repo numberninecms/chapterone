@@ -10,10 +10,13 @@
 
 namespace NumberNine\ChapterOne;
 
-use NumberNine\Common\Bundle\Bundle;
+use NumberNine\Common\Bundle\BundleTrait;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class NumberNineChapterOneBundle extends Bundle
 {
+    use BundleTrait;
+
     protected function getAlias(): string
     {
         return 'numbernine_chapterone';
