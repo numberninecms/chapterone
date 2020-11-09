@@ -7,7 +7,8 @@
     {% block head %}
         {{ N9_head() }}
     {% endblock %}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:bold|Heebo">
+    <link rel="stylesheet"
+          href="{{ preload('https://fonts.googleapis.com/css?family=Oxygen:bold|Heebo', {as: 'style'}) }}">
 </head>
 <body class="{{ N9_dispatch('BodyClasses')|join(' ') }}">
 {% block header %}
