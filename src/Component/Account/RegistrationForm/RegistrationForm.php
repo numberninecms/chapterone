@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the NumberNine package.
  *
@@ -41,8 +42,12 @@ class RegistrationForm extends AbstractComponent implements EventSubscriberInter
         ];
     }
 
-    public function __construct(FormFactoryInterface $formFactory, RequestStack $requestStack, UserFactory $userFactory, UserAuthenticator $userAuthenticator)
-    {
+    public function __construct(
+        FormFactoryInterface $formFactory,
+        RequestStack $requestStack,
+        UserFactory $userFactory,
+        UserAuthenticator $userAuthenticator
+    ) {
         $this->formFactory = $formFactory;
         $this->userFactory = $userFactory;
         $this->userAuthenticator = $userAuthenticator;
@@ -78,7 +83,11 @@ class RegistrationForm extends AbstractComponent implements EventSubscriberInter
         $form->handleRequest($event->getRequest());
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = $this->userFactory->createUser($form->get('username')->getData(), $form->get('email')->getData(), $form->get('plainPassword')->getData());
+            $user = $this->userFactory->createUser(
+                $form->get('username')->getData(),
+                $form->get('email')->getData(),
+                $form->get('plainPassword')->getData()
+            );
             $this->response = $this->userAuthenticator->authenticateUser($user);
         }
     }

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the NumberNine package.
  *
@@ -47,8 +48,12 @@ class Comments extends AbstractComponent implements EventSubscriberInterface
         ];
     }
 
-    public function __construct(CommentRepository $commentRepository, FormFactoryInterface $formFactory, TokenStorageInterface $tokenStorage, EntityManagerInterface  $entityManager)
-    {
+    public function __construct(
+        CommentRepository $commentRepository,
+        FormFactoryInterface $formFactory,
+        TokenStorageInterface $tokenStorage,
+        EntityManagerInterface $entityManager
+    ) {
         $this->commentRepository = $commentRepository;
         $this->formFactory = $formFactory;
         $this->tokenStorage = $tokenStorage;

@@ -13,6 +13,4 @@ npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
-###> Remove this for production releases ###
-#src/Resources/public/build
-###< Remove this for production releases ###
+.phpunit.result.cache

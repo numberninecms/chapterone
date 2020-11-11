@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the NumberNine package.
  *
@@ -26,8 +27,10 @@ class ProductSpecifications extends AbstractComponent
      * @param ProductAttributeRepository $productAttributeRepository
      * @param ProductAttributeValueRepository $productAttributeValueRepository
      */
-    public function __construct(ProductAttributeRepository $productAttributeRepository, ProductAttributeValueRepository $productAttributeValueRepository)
-    {
+    public function __construct(
+        ProductAttributeRepository $productAttributeRepository,
+        ProductAttributeValueRepository $productAttributeValueRepository
+    ) {
         $this->productAttributeRepository = $productAttributeRepository;
         $this->productAttributeValueRepository = $productAttributeValueRepository;
     }
