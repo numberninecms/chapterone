@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the NumberNine package.
  *
@@ -21,7 +22,7 @@ use NumberNine\Shortcode\TextShortcode\TextShortcode;
 
 use function Symfony\Component\String\u;
 
-class PostCard extends AbstractComponent implements CacheableContent
+class PostCard extends AbstractComponent
 {
     use PostPropertyTrait;
 
@@ -46,7 +47,10 @@ class PostCard extends AbstractComponent implements CacheableContent
             return $excerpt;
         }
 
-        $shortcode = $this->shortcodeProcessor->getFirstShortcodeOfType(TextShortcode::class, (string)$this->post->getContent());
+        $shortcode = $this->shortcodeProcessor->getFirstShortcodeOfType(
+            TextShortcode::class,
+            (string)$this->post->getContent()
+        );
 
         return $shortcode ? u(strip_tags($shortcode['parameters']['content']))->truncate(300, '...') : '';
     }
