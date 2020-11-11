@@ -1,6 +1,7 @@
 {% verbatim %}
 <div v-if="computed.image">
     <img :src="computed.image.path.substr(0, computed.image.path.lastIndexOf('/') + 1) + computed.image.sizes.large.filename"
+         :alt="parameters.alt"
          class="max-w-full w-full h-auto"
          :style="{maxWidth: parameters.maxWidth > 0 ? parameters.maxWidth + 'px' : 'auto', maxHeight: parameters.maxHeight > 0 ? parameters.maxHeight + 'px' : 'auto'}">
 </div>
