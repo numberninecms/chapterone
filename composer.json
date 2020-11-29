@@ -22,9 +22,9 @@
         "doctrine/doctrine-bundle": "^2.0",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "doctrine/orm": "^2.7",
-        "numberninecms/cms": "dev-develop",
-        "numberninecms/common": "dev-develop",
-        "numberninecms/faker": "dev-develop",
+        "numberninecms/cms": "0.1.*-dev",
+        "numberninecms/common": "0.1.*-dev",
+        "numberninecms/faker": "0.1.*-dev",
         "symfony/event-dispatcher": "^5.1",
         "symfony/form": "^5.1",
         "symfony/http-foundation": "^5.1",
@@ -49,10 +49,16 @@
     "config": {
         "sort-packages": true
     },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "0.1.x-dev"
+        }
+    },
     "autoload": {
         "psr-4": {
             "NumberNine\\ChapterOne\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
