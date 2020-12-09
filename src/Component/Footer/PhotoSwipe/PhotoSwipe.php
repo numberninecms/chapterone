@@ -11,8 +11,14 @@
 
 namespace NumberNine\ChapterOne\Component\Footer\PhotoSwipe;
 
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 
-class PhotoSwipe extends AbstractComponent
+class PhotoSwipe implements ComponentInterface
 {
+    public function getExposedValues(): array
+    {
+        return [
+
+        ];
+    }
 }

@@ -12,9 +12,17 @@
 namespace NumberNine\ChapterOne\Component\Post\Partial\PostMeta;
 
 use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Model\Component\Features\PostPropertyTrait;
 
-class PostMeta extends AbstractComponent
+class PostMeta implements ComponentInterface
 {
     use PostPropertyTrait;
+
+    public function getExposedValues(): array
+    {
+        return [
+            'post' => $this->post,
+        ];
+    }
 }

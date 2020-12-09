@@ -13,7 +13,7 @@ namespace NumberNine\ChapterOne\Component\Account\LoginForm;
 
 use NumberNine\Event\LoginPathsEvent;
 use NumberNine\Form\User\LoginFormType;
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -24,7 +24,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class LoginForm extends AbstractComponent implements EventSubscriberInterface
+class LoginForm implements ComponentInterface, EventSubscriberInterface
 {
     private AuthenticationUtils $authenticationUtils;
     private FormFactoryInterface $formFactory;
@@ -57,12 +57,12 @@ class LoginForm extends AbstractComponent implements EventSubscriberInterface
         }
     }
 
-    public function getError(): ?AuthenticationException
+    private function getError(): ?AuthenticationException
     {
         return $this->authenticationUtils->getLastAuthenticationError();
     }
 
-    public function getForm(): ?FormView
+    private function getForm(): FormView
     {
         return $this->getFormObject()->createView();
     }
@@ -76,5 +76,13 @@ class LoginForm extends AbstractComponent implements EventSubscriberInterface
                 '_csrf_token' => $this->csrfTokenManager->getToken('authenticate')
             ]
         );
+    }
+
+    public function getExposedValues(): array
+    {
+        return [
+            'form' => $this->getForm(),
+            'error' => $this->getError(),
+        ];
     }
 }

@@ -11,8 +11,14 @@
 
 namespace NumberNine\ChapterOne\Component\Breadcrumb;
 
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 
-class Breadcrumb extends AbstractComponent
+class Breadcrumb implements ComponentInterface
 {
+    public function getExposedValues(): array
+    {
+        return [
+
+        ];
+    }
 }

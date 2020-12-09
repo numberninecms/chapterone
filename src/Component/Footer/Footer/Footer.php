@@ -11,8 +11,14 @@
 
 namespace NumberNine\ChapterOne\Component\Footer\Footer;
 
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 
-class Footer extends AbstractComponent
+class Footer implements ComponentInterface
 {
+    public function getExposedValues(): array
+    {
+        return [
+
+        ];
+    }
 }

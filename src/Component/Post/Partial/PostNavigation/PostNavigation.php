@@ -12,11 +12,11 @@
 namespace NumberNine\ChapterOne\Component\Post\Partial\PostNavigation;
 
 use NumberNine\Entity\Post;
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Model\Component\Features\PostPropertyTrait;
 use NumberNine\Repository\PostRepository;
 
-class PostNavigation extends AbstractComponent
+class PostNavigation implements ComponentInterface
 {
     use PostPropertyTrait;
 
@@ -30,7 +30,7 @@ class PostNavigation extends AbstractComponent
         $this->postRepository = $postRepository;
     }
 
-    public function getPreviousPost(): ?Post
+    private function getPreviousPost(): ?Post
     {
         if (!$this->fetched) {
             $this->fetchNavigationPosts();
@@ -39,7 +39,7 @@ class PostNavigation extends AbstractComponent
         return $this->previousPost;
     }
 
-    public function getNextPost(): ?Post
+    private function getNextPost(): ?Post
     {
         if (!$this->fetched) {
             $this->fetchNavigationPosts();
@@ -59,5 +59,13 @@ class PostNavigation extends AbstractComponent
         $this->previousPost = $siblings['previous'];
         $this->nextPost = $siblings['next'];
         $this->fetched = true;
+    }
+
+    public function getExposedValues(): array
+    {
+        return [
+            'previousPost' => $this->getPreviousPost(),
+            'nextPost' => $this->getNextPost(),
+        ];
     }
 }
