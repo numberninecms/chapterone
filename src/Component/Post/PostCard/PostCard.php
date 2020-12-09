@@ -12,17 +12,14 @@
 namespace NumberNine\ChapterOne\Component\Post\PostCard;
 
 use Exception;
-use NumberNine\Entity\Post;
-use NumberNine\Exception\InvalidCacheableContentException;
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Model\Component\Features\PostPropertyTrait;
 use NumberNine\Content\ShortcodeProcessor;
-use NumberNine\Model\Shortcode\CacheableContent;
 use NumberNine\Shortcode\TextShortcode\TextShortcode;
 
 use function Symfony\Component\String\u;
 
-class PostCard extends AbstractComponent
+class PostCard implements ComponentInterface
 {
     use PostPropertyTrait;
 
@@ -37,7 +34,7 @@ class PostCard extends AbstractComponent
      * @return string
      * @throws Exception
      */
-    public function getExcerpt(): string
+    private function getExcerpt(): string
     {
         if (!$this->post) {
             return '';
@@ -55,12 +52,11 @@ class PostCard extends AbstractComponent
         return $shortcode ? u(strip_tags($shortcode['parameters']['content']))->truncate(300, '...') : '';
     }
 
-    public function getCacheIdentifier(): string
+    public function getExposedValues(): array
     {
-        if (!$this->post) {
-            throw new InvalidCacheableContentException();
-        }
-
-        return sprintf('component_postcard_%d', $this->post->getId());
+        return [
+            'post' => $this->post,
+            'excerpt' => $this->getExcerpt(),
+        ];
     }
 }
