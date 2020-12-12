@@ -78,7 +78,7 @@ class LoginForm implements ComponentInterface, EventSubscriberInterface
         );
     }
 
-    public function getExposedValues(): array
+    public function getTemplateParameters(): array
     {
         return [
             'form' => $this->getForm(),

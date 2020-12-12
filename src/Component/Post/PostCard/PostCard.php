@@ -52,7 +52,7 @@ class PostCard implements ComponentInterface
         return $shortcode ? u(strip_tags($shortcode['parameters']['content']))->truncate(300, '...') : '';
     }
 
-    public function getExposedValues(): array
+    public function getTemplateParameters(): array
     {
         return [
             'post' => $this->post,

@@ -58,7 +58,7 @@ class SocialLinks implements ComponentInterface
         return $this->request ? $this->socialSharer->getEmailShareLink($title, $this->request->getUri()) : '';
     }
 
-    public function getExposedValues(): array
+    public function getTemplateParameters(): array
     {
         return [
             'facebookLink' => $this->getFacebookLink(),

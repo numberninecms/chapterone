@@ -15,7 +15,7 @@ use NumberNine\Model\Component\ComponentInterface;
 
 class Breadcrumb implements ComponentInterface
 {
-    public function getExposedValues(): array
+    public function getTemplateParameters(): array
     {
         return [
 

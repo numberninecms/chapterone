@@ -18,7 +18,7 @@ class SinglePost implements ComponentInterface
 {
     use PostPropertyTrait;
 
-    public function getExposedValues(): array
+    public function getTemplateParameters(): array
     {
         return [
             'post' => $this->post,

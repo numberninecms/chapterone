@@ -61,7 +61,7 @@ class PostNavigation implements ComponentInterface
         $this->fetched = true;
     }
 
-    public function getExposedValues(): array
+    public function getTemplateParameters(): array
     {
         return [
             'previousPost' => $this->getPreviousPost(),

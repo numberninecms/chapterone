@@ -18,7 +18,7 @@ class SinglePage implements ComponentInterface
 {
     use PagePropertyTrait;
 
-    public function getExposedValues(): array
+    public function getTemplateParameters(): array
     {
         return [
             'page' => $this->page,

@@ -114,7 +114,7 @@ class Comments implements ComponentInterface, EventSubscriberInterface
         $this->currentEntity = $event->getContentEntity();
     }
 
-    public function getExposedValues(): array
+    public function getTemplateParameters(): array
     {
         return [
             'comments' => $this->getComments(),
