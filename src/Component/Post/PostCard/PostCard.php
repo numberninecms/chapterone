@@ -15,7 +15,7 @@ use Exception;
 use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Model\Component\Features\PostPropertyTrait;
 use NumberNine\Content\ShortcodeProcessor;
-use NumberNine\Shortcode\TextShortcode\TextShortcode;
+use NumberNine\Shortcode\TextShortcode;
 
 use function Symfony\Component\String\u;
 
