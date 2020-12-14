@@ -18,7 +18,7 @@ use NumberNine\Entity\ContentEntity;
 use NumberNine\Entity\User;
 use NumberNine\Event\CurrentContentEntityEvent;
 use NumberNine\Form\Content\CommentFormType;
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Model\Component\Features\ContentEntityPropertyTrait;
 use NumberNine\Repository\CommentRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-class Comments extends AbstractComponent implements EventSubscriberInterface
+class Comments implements ComponentInterface, EventSubscriberInterface
 {
     use ContentEntityPropertyTrait;
 
@@ -60,7 +60,7 @@ class Comments extends AbstractComponent implements EventSubscriberInterface
         $this->entityManager = $entityManager;
     }
 
-    public function getComments(): array
+    private function getComments(): array
     {
         if (!$this->contentEntity) {
             return [];
@@ -69,7 +69,7 @@ class Comments extends AbstractComponent implements EventSubscriberInterface
         return $this->commentRepository->findByContentEntityId((int)$this->contentEntity->getId());
     }
 
-    public function getForm(): ?FormView
+    private function getForm(): FormView
     {
         return $this->getFormObject()->createView();
     }
@@ -112,5 +112,13 @@ class Comments extends AbstractComponent implements EventSubscriberInterface
     public function setCurrentEntity(CurrentContentEntityEvent $event): void
     {
         $this->currentEntity = $event->getContentEntity();
+    }
+
+    public function getTemplateParameters(): array
+    {
+        return [
+            'comments' => $this->getComments(),
+            'form' => $this->getForm(),
+        ];
     }
 }

@@ -13,7 +13,7 @@ namespace NumberNine\ChapterOne\Component\Account\RegistrationForm;
 
 use NumberNine\Entity\User;
 use NumberNine\Form\User\RegistrationFormType;
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Security\UserAuthenticator;
 use NumberNine\Security\UserFactory;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
-class RegistrationForm extends AbstractComponent implements EventSubscriberInterface
+class RegistrationForm implements ComponentInterface, EventSubscriberInterface
 {
     private FormFactoryInterface $formFactory;
     private ?Request $request;
@@ -54,7 +54,7 @@ class RegistrationForm extends AbstractComponent implements EventSubscriberInter
         $this->request = $requestStack->getCurrentRequest();
     }
 
-    public function getForm(): ?FormView
+    private function getForm(): ?FormView
     {
         if (!$this->request || !($form = $this->getFormObject())) {
             return null;
@@ -97,5 +97,12 @@ class RegistrationForm extends AbstractComponent implements EventSubscriberInter
         if ($this->response) {
             $event->setResponse($this->response);
         }
+    }
+
+    public function getTemplateParameters(): array
+    {
+        return [
+            'form' => $this->getForm(),
+        ];
     }
 }

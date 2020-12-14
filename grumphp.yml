@@ -5,7 +5,6 @@ grumphp:
             level: 8
         twigcs:
             path: './src/'
-        phpunit: ~
         phpcs:
             standard: PSR12
         composer:
