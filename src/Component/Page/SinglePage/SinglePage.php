@@ -11,10 +11,17 @@
 
 namespace NumberNine\ChapterOne\Component\Page\SinglePage;
 
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Model\Component\Features\PagePropertyTrait;
 
-class SinglePage extends AbstractComponent
+class SinglePage implements ComponentInterface
 {
     use PagePropertyTrait;
+
+    public function getTemplateParameters(): array
+    {
+        return [
+            'page' => $this->page,
+        ];
+    }
 }

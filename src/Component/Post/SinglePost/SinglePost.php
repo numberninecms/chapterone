@@ -11,10 +11,17 @@
 
 namespace NumberNine\ChapterOne\Component\Post\SinglePost;
 
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Model\Component\Features\PostPropertyTrait;
 
-class SinglePost extends AbstractComponent
+class SinglePost implements ComponentInterface
 {
     use PostPropertyTrait;
+
+    public function getTemplateParameters(): array
+    {
+        return [
+            'post' => $this->post,
+        ];
+    }
 }
