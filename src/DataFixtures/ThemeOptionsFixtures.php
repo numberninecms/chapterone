@@ -11,19 +11,25 @@
 
 namespace NumberNine\ChapterOne\DataFixtures;
 
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
-use NumberNine\DataFixtures\BaseFixture;
 use NumberNine\Entity\ThemeOptions;
 use Symfony\Component\Yaml\Yaml;
 
-class ThemeOptionsFixtures extends BaseFixture
+class ThemeOptionsFixtures extends Fixture implements FixtureGroupInterface
 {
-    public function loadData(ObjectManager $manager): void
+    public function load(ObjectManager $manager): void
     {
         $options = Yaml::parseFile(__DIR__ . '/../Resources/config/options.yaml');
         $themeOptions = (new ThemeOptions())->setTheme('ChapterOne')->setOptions($options['options']);
 
         $manager->persist($themeOptions);
         $manager->flush();
+    }
+
+    public static function getGroups(): array
+    {
+        return ['numbernine_theme'];
     }
 }
