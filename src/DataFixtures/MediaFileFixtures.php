@@ -34,7 +34,7 @@ final class MediaFileFixtures extends Fixture implements DependentFixtureInterfa
         /** @var User $admin */
         $admin = $this->getReference(User::class . '_administrator');
         $logo = $this->mediaFileFactory->createMediaFileFromFilename(
-            __DIR__ . '/../../../assets/images/NumberNine512_slogan.png',
+            __DIR__ . '/../../assets/images/NumberNine512_slogan.png',
             $admin,
             false,
             true,
