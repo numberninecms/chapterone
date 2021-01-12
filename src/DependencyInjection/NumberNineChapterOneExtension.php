@@ -11,6 +11,7 @@
 
 namespace NumberNine\ChapterOne\DependencyInjection;
 
+use NumberNine\Commerce\NumberNineCommerceBundle;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -49,5 +50,9 @@ class NumberNineChapterOneExtension extends ConfigurableExtension implements Pre
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
+
+        if (class_exists(NumberNineCommerceBundle::class)) {
+            $loader->load('services_commerce.yaml');
+        }
     }
 }

@@ -11,42 +11,38 @@
 
 namespace NumberNine\ChapterOne\Component\Product\SingleProduct;
 
-use NumberNine\CommerceBundle\Model\CommerceSettings;
+use NumberNine\Commerce\Model\CommerceSettings;
+use NumberNine\Commerce\Model\Component\Features\ProductPropertyTrait;
+use NumberNine\Configuration\ConfigurationReadWriter;
 use NumberNine\Entity\ContentEntity;
 use NumberNine\Entity\MediaFile;
-use NumberNine\Model\Component\AbstractComponent;
-use NumberNine\Model\Component\Features\ProductPropertyTrait;
+use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Repository\ContentEntityRepository;
-use NumberNine\Service\CoreOptionService;
 
-class SingleProduct extends AbstractComponent
+class SingleProduct implements ComponentInterface
 {
     use ProductPropertyTrait;
 
-    private CoreOptionService $coreOptionService;
+    private ConfigurationReadWriter $configurationReadWriter;
     private ContentEntityRepository $contentEntityRepository;
 
-    /**
-     * @param ContentEntityRepository $contentEntityRepository
-     */
-    public function __construct(ContentEntityRepository $contentEntityRepository, CoreOptionService $coreOptionService)
-    {
+    public function __construct(
+        ContentEntityRepository $contentEntityRepository,
+        ConfigurationReadWriter $configurationReadWriter
+    ) {
         $this->contentEntityRepository = $contentEntityRepository;
-        $this->coreOptionService = $coreOptionService;
+        $this->configurationReadWriter = $configurationReadWriter;
     }
 
-    /**
-     * @return string
-     */
-    public function getCurrency(): string
+    private function getCurrency(): string
     {
-        return $this->coreOptionService->get(CommerceSettings::BASE_CURRENCY, 'USD');
+        return $this->configurationReadWriter->read(CommerceSettings::BASE_CURRENCY, 'USD');
     }
 
     /**
      * @return MediaFile[]|ContentEntity[]
      */
-    public function getImages(): array
+    private function getImages(): array
     {
         if (!$this->product) {
             return [];
@@ -55,5 +51,14 @@ class SingleProduct extends AbstractComponent
         $mediaFiles = $this->contentEntityRepository->findChildrenContentEntitiesOfType($this->product, 'media_file');
 
         return array_filter($mediaFiles, fn(MediaFile $file) => strpos((string)$file->getMimeType(), 'image/') === 0);
+    }
+
+    public function getTemplateParameters(): array
+    {
+        return [
+            'product' => $this->product,
+            'images' => $this->getImages(),
+            'currency' => $this->getCurrency(),
+        ];
     }
 }

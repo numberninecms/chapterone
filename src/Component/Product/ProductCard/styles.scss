@@ -11,7 +11,7 @@
     @apply relative max-w-sm overflow-hidden shadow-lg;
 
     .product-badge {
-        @apply absolute left-0 top-0 z-10 mt-3 p-3 bg-teal-700 text-white opacity-75 pointer-events-none;
+        @apply absolute left-0 top-0 z-10 mt-3 p-3 bg-primary text-white opacity-75 pointer-events-none;
     }
 
     .product-categories {
