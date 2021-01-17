@@ -11,10 +11,17 @@
 
 namespace NumberNine\ChapterOne\Component\Block\SingleBlock;
 
-use NumberNine\Model\Component\AbstractComponent;
+use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Model\Component\Features\BlockPropertyTrait;
 
-class SingleBlock extends AbstractComponent
+class SingleBlock implements ComponentInterface
 {
     use BlockPropertyTrait;
+
+    public function getTemplateParameters(): array
+    {
+        return [
+            'block' => $this->block,
+        ];
+    }
 }
