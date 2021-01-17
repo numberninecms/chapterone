@@ -1,0 +1,12 @@
+<ul class="list-unstyled">
+{% for category in categories %}
+    {% if not (not showIfEmpty and category.count == 0) %}
+        <li class="mb-2{% if term and term.id == category.term.id %} font-bold{% endif %}">
+            {{ N9_term_link(category.term) }}
+            {% if showProductCounts %}
+                ({{ category.count }})
+            {% endif %}
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>

@@ -7,7 +7,7 @@
     "license": "MIT",
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
-        "@symfony/webpack-encore": "^0.31.0",
+        "@symfony/webpack-encore": "^0.33.0",
         "@types/domready": "^1.0.0",
         "@types/flickity": "^2.2.3",
         "@types/jquery": "^3.5.4",
