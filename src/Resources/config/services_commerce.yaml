@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    NumberNine\ChapterOne\Component\Product\:
+        resource: '../../Component/Product/*'
+

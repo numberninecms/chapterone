@@ -1,11 +1,1 @@
-{% extends N9_base_template() %}
-
-{% block header %}{% endblock %}
-
-{% block body %}
-    {{ N9_component('Block/SingleBlock', {block: entity}) }}
-{% endblock %}
-
-{% block footer %}
-    {{ N9_footer() }}
-{% endblock %}
+{{ N9_component('Block/SingleBlock', {block: entity}) }}

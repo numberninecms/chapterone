@@ -13,17 +13,22 @@ namespace NumberNine\ChapterOne\Component\Product\ProductSections;
 
 use NumberNine\ChapterOne\Event\ProductSectionsEvent;
 use NumberNine\ChapterOne\Model\Product\ProductSection;
-use NumberNine\Model\Component\AbstractComponent;
-use NumberNine\Model\Component\Features\ProductPropertyTrait;
+use NumberNine\Commerce\Model\Component\Features\ProductPropertyTrait;
+use NumberNine\Model\Component\ComponentInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class ProductSections extends AbstractComponent
+class ProductSections implements ComponentInterface
 {
     use ProductPropertyTrait;
 
-    /**
-     * @return array
-     */
-    public function getSections(): array
+    private EventDispatcherInterface $eventDispatcher;
+
+    public function __construct(EventDispatcherInterface $eventDispatcher)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+    }
+
+    private function getSections(): array
     {
         $sections = [
             new ProductSection('Description', 'ProductDescription', 512),
@@ -36,5 +41,13 @@ class ProductSections extends AbstractComponent
         usort($sections, fn(ProductSection $a, ProductSection $b) => $b->getPriority() <=> $a->getPriority());
 
         return $sections;
+    }
+
+    public function getTemplateParameters(): array
+    {
+        return [
+            'product' => $this->product,
+            'sections' => $this->getSections(),
+        ];
     }
 }

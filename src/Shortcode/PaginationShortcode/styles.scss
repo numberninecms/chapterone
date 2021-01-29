@@ -8,7 +8,7 @@
  */
 
 .pagination {
-    @apply flex my-5;
+    @apply flex my-5 flex-wrap;
 
     a {
         @apply border border-solid px-3 py-1 mr-3;

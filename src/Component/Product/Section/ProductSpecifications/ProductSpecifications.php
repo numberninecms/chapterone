@@ -11,22 +11,18 @@
 
 namespace NumberNine\ChapterOne\Component\Product\Section\ProductSpecifications;
 
-use NumberNine\CommerceBundle\Repository\ProductAttributeRepository;
-use NumberNine\CommerceBundle\Repository\ProductAttributeValueRepository;
-use NumberNine\Model\Component\AbstractComponent;
-use NumberNine\Model\Component\Features\ProductPropertyTrait;
+use NumberNine\Commerce\Model\Component\Features\ProductPropertyTrait;
+use NumberNine\Commerce\Repository\ProductAttributeRepository;
+use NumberNine\Commerce\Repository\ProductAttributeValueRepository;
+use NumberNine\Model\Component\ComponentInterface;
 
-class ProductSpecifications extends AbstractComponent
+class ProductSpecifications implements ComponentInterface
 {
     use ProductPropertyTrait;
 
     private ProductAttributeRepository $productAttributeRepository;
     private ProductAttributeValueRepository $productAttributeValueRepository;
 
-    /**
-     * @param ProductAttributeRepository $productAttributeRepository
-     * @param ProductAttributeValueRepository $productAttributeValueRepository
-     */
     public function __construct(
         ProductAttributeRepository $productAttributeRepository,
         ProductAttributeValueRepository $productAttributeValueRepository
@@ -35,7 +31,7 @@ class ProductSpecifications extends AbstractComponent
         $this->productAttributeValueRepository = $productAttributeValueRepository;
     }
 
-    public function getAttributes(): array
+    private function getAttributes(): array
     {
         if (!$this->product) {
             return [];
@@ -55,5 +51,13 @@ class ProductSpecifications extends AbstractComponent
         }
 
         return $result;
+    }
+
+    public function getTemplateParameters(): array
+    {
+        return [
+            'product' => $this->product,
+            'attributes' => $this->getAttributes(),
+        ];
     }
 }

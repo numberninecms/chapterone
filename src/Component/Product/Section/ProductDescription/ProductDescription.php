@@ -11,10 +11,17 @@
 
 namespace NumberNine\ChapterOne\Component\Product\Section\ProductDescription;
 
-use NumberNine\Model\Component\AbstractComponent;
-use NumberNine\Model\Component\Features\ProductPropertyTrait;
+use NumberNine\Commerce\Model\Component\Features\ProductPropertyTrait;
+use NumberNine\Model\Component\ComponentInterface;
 
-class ProductDescription extends AbstractComponent
+class ProductDescription implements ComponentInterface
 {
     use ProductPropertyTrait;
+
+    public function getTemplateParameters(): array
+    {
+        return [
+            'product' => $this->product,
+        ];
+    }
 }

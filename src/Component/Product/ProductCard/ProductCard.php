@@ -11,27 +11,27 @@
 
 namespace NumberNine\ChapterOne\Component\Product\ProductCard;
 
-use NumberNine\CommerceBundle\Model\CommerceSettings;
-use NumberNine\Model\Component\AbstractComponent;
-use NumberNine\Model\Component\Features\ProductPropertyTrait;
-use NumberNine\Service\CoreOptionService;
+use NumberNine\Commerce\Model\CommerceSettings;
+use NumberNine\Commerce\Model\Component\Features\ProductPropertyTrait;
+use NumberNine\Configuration\ConfigurationReadWriter;
+use NumberNine\Model\Component\ComponentInterface;
 
-class ProductCard extends AbstractComponent
+class ProductCard implements ComponentInterface
 {
     use ProductPropertyTrait;
 
-    private CoreOptionService $coreOptionService;
+    private ConfigurationReadWriter $configurationReadWriter;
 
-    /**
-     * @param CoreOptionService $coreOptionService
-     */
-    public function __construct(CoreOptionService $coreOptionService)
+    public function __construct(ConfigurationReadWriter $configurationReadWriter)
     {
-        $this->coreOptionService = $coreOptionService;
+        $this->configurationReadWriter = $configurationReadWriter;
     }
 
-    public function getCurrency(): string
+    public function getTemplateParameters(): array
     {
-        return $this->coreOptionService->get(CommerceSettings::BASE_CURRENCY, 'USD');
+        return [
+            'product' => $this->product,
+            'currency' => $this->configurationReadWriter->read(CommerceSettings::BASE_CURRENCY, 'USD'),
+        ];
     }
 }

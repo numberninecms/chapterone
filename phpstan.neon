@@ -9,6 +9,7 @@ parameters:
         - src
     excludes_analyse:
         - src/Component/Product
+        - src/DataFixtures
     doctrine:
         objectManagerLoader: build/phpstan/doctrine-orm-bootstrap.php
     checkGenericClassInNonGenericObjectType: false
