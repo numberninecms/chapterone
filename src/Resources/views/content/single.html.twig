@@ -1,0 +1,9 @@
+{% extends N9_base_template() %}
+
+{% block body %}
+    <div class="container standard-container">
+        <main class="page-main">
+            {{ N9_component('Page/SinglePage', {page: entity}) }}
+        </main>
+    </div>
+{% endblock %}

@@ -12,10 +12,13 @@
 namespace NumberNine\ChapterOne\Component\Account\RegistrationForm;
 
 use NumberNine\Entity\User;
+use NumberNine\Event\RegistrationFormBuilderEvent;
+use NumberNine\Event\RegistrationFormSuccessEvent;
 use NumberNine\Form\User\RegistrationFormType;
 use NumberNine\Model\Component\ComponentInterface;
 use NumberNine\Security\UserAuthenticator;
 use NumberNine\Security\UserFactory;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -32,6 +35,7 @@ class RegistrationForm implements ComponentInterface, EventSubscriberInterface
     private ?Request $request;
     private UserFactory $userFactory;
     private UserAuthenticator $userAuthenticator;
+    private EventDispatcherInterface $eventDispatcher;
     private ?Response $response = null;
 
     public static function getSubscribedEvents(): array
@@ -46,11 +50,13 @@ class RegistrationForm implements ComponentInterface, EventSubscriberInterface
         FormFactoryInterface $formFactory,
         RequestStack $requestStack,
         UserFactory $userFactory,
-        UserAuthenticator $userAuthenticator
+        UserAuthenticator $userAuthenticator,
+        EventDispatcherInterface $eventDispatcher
     ) {
         $this->formFactory = $formFactory;
         $this->userFactory = $userFactory;
         $this->userAuthenticator = $userAuthenticator;
+        $this->eventDispatcher = $eventDispatcher;
         $this->request = $requestStack->getCurrentRequest();
     }
 
@@ -71,7 +77,12 @@ class RegistrationForm implements ComponentInterface, EventSubscriberInterface
             return null;
         }
 
-        return $this->formFactory->create(RegistrationFormType::class, new User());
+        $builder = $this->formFactory->createBuilder(RegistrationFormType::class, new User());
+
+        /** @var RegistrationFormBuilderEvent $event */
+        $event = $this->eventDispatcher->dispatch(new RegistrationFormBuilderEvent($builder));
+
+        return $event->getBuilder()->getForm();
     }
 
     public function processForm(ControllerEvent $event): void
@@ -88,7 +99,13 @@ class RegistrationForm implements ComponentInterface, EventSubscriberInterface
                 $form->get('email')->getData(),
                 $form->get('plainPassword')->getData()
             );
-            $this->response = $this->userAuthenticator->authenticateUser($user);
+
+            $response = $this->userAuthenticator->authenticateUser($user);
+
+            /** @var RegistrationFormSuccessEvent $event */
+            $event = $this->eventDispatcher->dispatch(new RegistrationFormSuccessEvent($user, $response));
+
+            $this->response = $event->getResponse();
         }
     }
 
