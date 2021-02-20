@@ -12,7 +12,7 @@
 
 .divider {
     @apply block w-full;
-    background-color: rgba(var(--secondary-rgb), 0.25);
+    background-color: rgba(var(--color-secondary-rgb), 0.25);
     height: 3px;
     margin: 1em 0 1em;
     max-width: 30px;

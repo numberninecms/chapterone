@@ -1,3 +1,8 @@
-<a class="btn btn-primary btn-{{ style }}" href="{{ link }}">
+{% set btn_color = 'btn-color-' ~ color %}
+{% set btn_style = style != 'default' ? 'btn-style-' ~ style : '' %}
+{% set btn_case = case != 'normal' ? 'btn-case-' ~ case : '' %}
+{% set btn_size = size != 'normal' ? 'btn-size-' ~ size : '' %}
+{% set btn_width = expand ? 'btn-width-expand' : '' %}
+<a class="btn {{ btn_color }} {{ btn_style }} {{ btn_case }} {{ btn_size }} {{ btn_width }} {{ custom_class }}" href="{{ link }}">
     {{ text }}
 </a>
