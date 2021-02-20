@@ -7,7 +7,10 @@
  * file that was distributed with this source code.
  */
 
-@import "~@fortawesome/fontawesome-free/css/all.css";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 
 @import "~tailwindcss/base";
 
@@ -16,29 +19,30 @@
 @import "~tailwindcss/components";
 
 @import "components";
+@import "shortcodes";
 
 @import "~tailwindcss/utilities";
 
 html {
     background-color: white;
 }
-
-.light, .light p, .light td, .light a {
-    color: var(--dark);
-}
-
-.dark, .dark p, .dark td, .dark a {
-    color: var(--light);
-}
-
-.light a {
-    &:hover {
-        color: rgba(var(--dark-rgb), 0.75);
-    }
-}
-
-.dark a {
-    &:hover {
-        color: rgba(var(--light-rgb), 0.75);
-    }
-}
+//
+//.light, .light p, .light td, .light a {
+//    color: var(--dark);
+//}
+//
+//.dark, .dark p, .dark td, .dark a {
+//    color: var(--light);
+//}
+//
+//.light a {
+//    &:hover {
+//        color: rgba(var(--dark-rgb), 0.75);
+//    }
+//}
+//
+//.dark a {
+//    &:hover {
+//        color: rgba(var(--light-rgb), 0.75);
+//    }
+//}

@@ -12,17 +12,17 @@
 
     a {
         @apply border border-solid px-3 py-1 mr-3;
-        color: var(--primary);
-        border-color: rgba(var(--primary-rgb), 0.7);
+        color: var(--color-primary);
+        border-color: rgba(var(--color-primary-rgb), 0.7);
 
         &.active {
             @apply text-white;
-            background-color: var(--primary);
+            background-color: var(--color-primary);
         }
 
         &:hover:not(.active) {
             @apply text-gray-100;
-            background-color: rgba(var(--primary-rgb), 0.7);
+            background-color: rgba(var(--color-primary-rgb), 0.7);
         }
     }
 }

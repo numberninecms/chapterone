@@ -9,9 +9,9 @@ Encore
     .setPublicPath('/bundles/numberninechapterone/build')
     .setManifestKeyPrefix('/bundles/numberninechapterone/build/')
 
-    .addEntry('main', './assets/ts/index.ts', {preload: true, async: true})
-    .addEntry('product', './assets/ts/product.ts', {preload: true, async: true})
-    .addEntry('shop', './assets/ts/shop.ts', {preload: true, async: true})
+    .addEntry('main', './assets/ts/index.ts')
+    .addEntry('product', './assets/ts/product.ts')
+    .addEntry('shop', './assets/ts/shop.ts')
 
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
@@ -33,6 +33,7 @@ Encore
     .enablePostCssLoader((options) => {
         options.postcssOptions = {
             plugins: [
+                require('postcss-import'),
                 require('tailwindcss'),
                 require('autoprefixer'),
             ]

@@ -12,13 +12,13 @@
 
     .post-date {
         @apply text-xs pb-3;
-        color: rgba(var(--secondary-rgb), 0.5);
+        color: rgba(var(--color-secondary-rgb), 0.5);
     }
 
     .post-categories {
         a {
             @apply text-xs uppercase #{!important};
-            color: var(--primary);
+            color: var(--color-primary);
         }
     }
 
