@@ -1,3 +1,15 @@
+function dynamicHsl(h, s, l) {
+    return ({ opacityVariable, opacityValue }) => {
+        if (opacityValue !== undefined) {
+            return `hsla(${h}, ${s}, ${l}, ${opacityValue})`
+        }
+        if (opacityVariable !== undefined) {
+            return `hsla(${h}, ${s}, ${l}, var(${opacityVariable}, 1))`
+        }
+        return `hsl(${h}, ${s}, ${l})`
+    }
+}
+
 module.exports = {
     purge: [],
     theme: {
@@ -9,55 +21,55 @@ module.exports = {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: 'var(--color-primary)',
-                    100: 'hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) + 30%))',
-                    200: 'hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) + 24%))',
-                    300: 'hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) + 18%))',
-                    400: 'hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) + 12%))',
-                    500: 'hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) + 6%))',
-                    600: 'var(--color-primary)',
-                    700: 'hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) - 6%))',
-                    800: 'hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) - 12%))',
-                    900: 'hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) - 18%))',
+                    DEFAULT: dynamicHsl('var(--color-primary-h)', 'var(--color-primary-s)', 'var(--color-primary-l)'),
+                    100: dynamicHsl('var(--color-primary-h)', 'var(--color-primary-s)', 'calc(var(--color-primary-l) + 30%)'),
+                    200: dynamicHsl('var(--color-primary-h)', 'var(--color-primary-s)', 'calc(var(--color-primary-l) + 24%)'),
+                    300: dynamicHsl('var(--color-primary-h)', 'var(--color-primary-s)', 'calc(var(--color-primary-l) + 18%)'),
+                    400: dynamicHsl('var(--color-primary-h)', 'var(--color-primary-s)', 'calc(var(--color-primary-l) + 12%)'),
+                    500: dynamicHsl('var(--color-primary-h)', 'var(--color-primary-s)', 'calc(var(--color-primary-l) + 6%)'),
+                    600: dynamicHsl('var(--color-primary-h)', 'var(--color-primary-s)', 'var(--color-primary-l)'),
+                    700: dynamicHsl('var(--color-primary-h)', 'var(--color-primary-s)', 'calc(var(--color-primary-l) - 6%)'),
+                    800: dynamicHsl('var(--color-primary-h)', 'var(--color-primary-s)', 'calc(var(--color-primary-l) - 12%)'),
+                    900: dynamicHsl('var(--color-primary-h)', 'var(--color-primary-s)', 'calc(var(--color-primary-l) - 18%)'),
                 },
-                
+
                 secondary: {
-                    DEFAULT: 'var(--color-secondary)',
-                    100: 'hsl(var(--color-secondary-h), var(--color-secondary-s), calc(var(--color-secondary-l) + 30%))',
-                    200: 'hsl(var(--color-secondary-h), var(--color-secondary-s), calc(var(--color-secondary-l) + 24%))',
-                    300: 'hsl(var(--color-secondary-h), var(--color-secondary-s), calc(var(--color-secondary-l) + 18%))',
-                    400: 'hsl(var(--color-secondary-h), var(--color-secondary-s), calc(var(--color-secondary-l) + 12%))',
-                    500: 'hsl(var(--color-secondary-h), var(--color-secondary-s), calc(var(--color-secondary-l) + 6%))',
-                    600: 'var(--color-secondary)',
-                    700: 'hsl(var(--color-secondary-h), var(--color-secondary-s), calc(var(--color-secondary-l) - 6%))',
-                    800: 'hsl(var(--color-secondary-h), var(--color-secondary-s), calc(var(--color-secondary-l) - 12%))',
-                    900: 'hsl(var(--color-secondary-h), var(--color-secondary-s), calc(var(--color-secondary-l) - 18%))',
+                    DEFAULT: dynamicHsl('var(--color-secondary-h)', 'var(--color-secondary-s)', 'var(--color-secondary-l)'),
+                    100: dynamicHsl('var(--color-secondary-h)', 'var(--color-secondary-s)', 'calc(var(--color-secondary-l) + 30%)'),
+                    200: dynamicHsl('var(--color-secondary-h)', 'var(--color-secondary-s)', 'calc(var(--color-secondary-l) + 24%)'),
+                    300: dynamicHsl('var(--color-secondary-h)', 'var(--color-secondary-s)', 'calc(var(--color-secondary-l) + 18%)'),
+                    400: dynamicHsl('var(--color-secondary-h)', 'var(--color-secondary-s)', 'calc(var(--color-secondary-l) + 12%)'),
+                    500: dynamicHsl('var(--color-secondary-h)', 'var(--color-secondary-s)', 'calc(var(--color-secondary-l) + 6%)'),
+                    600: dynamicHsl('var(--color-secondary-h)', 'var(--color-secondary-s)', 'var(--color-secondary-l)'),
+                    700: dynamicHsl('var(--color-secondary-h)', 'var(--color-secondary-s)', 'calc(var(--color-secondary-l) - 6%)'),
+                    800: dynamicHsl('var(--color-secondary-h)', 'var(--color-secondary-s)', 'calc(var(--color-secondary-l) - 12%)'),
+                    900: dynamicHsl('var(--color-secondary-h)', 'var(--color-secondary-s)', 'calc(var(--color-secondary-l) - 18%)'),
                 },
-                
+
                 tertiary: {
-                    DEFAULT: 'var(--color-tertiary)',
-                    100: 'hsl(var(--color-tertiary-h), var(--color-tertiary-s), calc(var(--color-tertiary-l) + 30%))',
-                    200: 'hsl(var(--color-tertiary-h), var(--color-tertiary-s), calc(var(--color-tertiary-l) + 24%))',
-                    300: 'hsl(var(--color-tertiary-h), var(--color-tertiary-s), calc(var(--color-tertiary-l) + 18%))',
-                    400: 'hsl(var(--color-tertiary-h), var(--color-tertiary-s), calc(var(--color-tertiary-l) + 12%))',
-                    500: 'hsl(var(--color-tertiary-h), var(--color-tertiary-s), calc(var(--color-tertiary-l) + 6%))',
-                    600: 'var(--color-tertiary)',
-                    700: 'hsl(var(--color-tertiary-h), var(--color-tertiary-s), calc(var(--color-tertiary-l) - 6%))',
-                    800: 'hsl(var(--color-tertiary-h), var(--color-tertiary-s), calc(var(--color-tertiary-l) - 12%))',
-                    900: 'hsl(var(--color-tertiary-h), var(--color-tertiary-s), calc(var(--color-tertiary-l) - 18%))',
+                    DEFAULT: dynamicHsl('var(--color-tertiary-h)', 'var(--color-tertiary-s)', 'var(--color-tertiary-l)'),
+                    100: dynamicHsl('var(--color-tertiary-h)', 'var(--color-tertiary-s)', 'calc(var(--color-tertiary-l) + 30%)'),
+                    200: dynamicHsl('var(--color-tertiary-h)', 'var(--color-tertiary-s)', 'calc(var(--color-tertiary-l) + 24%)'),
+                    300: dynamicHsl('var(--color-tertiary-h)', 'var(--color-tertiary-s)', 'calc(var(--color-tertiary-l) + 18%)'),
+                    400: dynamicHsl('var(--color-tertiary-h)', 'var(--color-tertiary-s)', 'calc(var(--color-tertiary-l) + 12%)'),
+                    500: dynamicHsl('var(--color-tertiary-h)', 'var(--color-tertiary-s)', 'calc(var(--color-tertiary-l) + 6%)'),
+                    600: dynamicHsl('var(--color-tertiary-h)', 'var(--color-tertiary-s)', 'var(--color-tertiary-l)'),
+                    700: dynamicHsl('var(--color-tertiary-h)', 'var(--color-tertiary-s)', 'calc(var(--color-tertiary-l) - 6%)'),
+                    800: dynamicHsl('var(--color-tertiary-h)', 'var(--color-tertiary-s)', 'calc(var(--color-tertiary-l) - 12%)'),
+                    900: dynamicHsl('var(--color-tertiary-h)', 'var(--color-tertiary-s)', 'calc(var(--color-tertiary-l) - 18%)'),
                 },
 
                 quaternary: {
-                    DEFAULT: 'var(--color-quaternary)',
-                    100: 'hsl(var(--color-quaternary-h), var(--color-quaternary-s), calc(var(--color-quaternary-l) + 30%))',
-                    200: 'hsl(var(--color-quaternary-h), var(--color-quaternary-s), calc(var(--color-quaternary-l) + 24%))',
-                    300: 'hsl(var(--color-quaternary-h), var(--color-quaternary-s), calc(var(--color-quaternary-l) + 18%))',
-                    400: 'hsl(var(--color-quaternary-h), var(--color-quaternary-s), calc(var(--color-quaternary-l) + 12%))',
-                    500: 'hsl(var(--color-quaternary-h), var(--color-quaternary-s), calc(var(--color-quaternary-l) + 6%))',
-                    600: 'var(--color-quaternary)',
-                    700: 'hsl(var(--color-quaternary-h), var(--color-quaternary-s), calc(var(--color-quaternary-l) - 6%))',
-                    800: 'hsl(var(--color-quaternary-h), var(--color-quaternary-s), calc(var(--color-quaternary-l) - 12%))',
-                    900: 'hsl(var(--color-quaternary-h), var(--color-quaternary-s), calc(var(--color-quaternary-l) - 18%))',
+                    DEFAULT: dynamicHsl('var(--color-quaternary-h)', 'var(--color-quaternary-s)', 'var(--color-quaternary-l)'),
+                    100: dynamicHsl('var(--color-quaternary-h)', 'var(--color-quaternary-s)', 'calc(var(--color-quaternary-l) + 30%)'),
+                    200: dynamicHsl('var(--color-quaternary-h)', 'var(--color-quaternary-s)', 'calc(var(--color-quaternary-l) + 24%)'),
+                    300: dynamicHsl('var(--color-quaternary-h)', 'var(--color-quaternary-s)', 'calc(var(--color-quaternary-l) + 18%)'),
+                    400: dynamicHsl('var(--color-quaternary-h)', 'var(--color-quaternary-s)', 'calc(var(--color-quaternary-l) + 12%)'),
+                    500: dynamicHsl('var(--color-quaternary-h)', 'var(--color-quaternary-s)', 'calc(var(--color-quaternary-l) + 6%)'),
+                    600: dynamicHsl('var(--color-quaternary-h)', 'var(--color-quaternary-s)', 'var(--color-quaternary-l)'),
+                    700: dynamicHsl('var(--color-quaternary-h)', 'var(--color-quaternary-s)', 'calc(var(--color-quaternary-l) - 6%)'),
+                    800: dynamicHsl('var(--color-quaternary-h)', 'var(--color-quaternary-s)', 'calc(var(--color-quaternary-l) - 12%)'),
+                    900: dynamicHsl('var(--color-quaternary-h)', 'var(--color-quaternary-s)', 'calc(var(--color-quaternary-l) - 18%)'),
                 },
             },
         },
