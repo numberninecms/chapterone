@@ -8,44 +8,60 @@
  */
 
 .title {
-    @apply relative flex flex-row flex-wrap items-center justify-center w-full uppercase;
+    @apply relative flex flex-row flex-wrap font-semibold items-center w-full uppercase text-secondary-700;
 
-    &.title-center {
-        @apply relative overflow-hidden;
+    &.title-style-left {
+        @apply justify-start border-b-2 border-solid border-secondary border-opacity-10;
+
+        span {
+            @apply pb-2 border-b-2 border-solid border-opacity-10 border-black;
+            margin-bottom: -2px;
+        }
+    }
+
+    &.title-style-center {
+        @apply relative overflow-hidden justify-center;
 
         span {
             @apply relative px-3 inline-block align-baseline;
 
             &:before, &:after {
-                @apply block absolute;
-                border-top: 2px solid #555;
-                opacity: 0.1;
+                @apply block absolute top-1/2 border-opacity-10 border-t-2 border-solid border-secondary;
                 width: 1000px;
                 content: '';
-                top: 50%;
             }
 
             &:before {
-                right: 100%;
+                @apply right-full;
             }
 
             &:after {
-                left: 100%;
+                @apply left-full;
             }
         }
     }
-}
 
-.title-content {
-    @apply uppercase;
+    &.title-size-xsmall {
+        @apply text-lg;
+    }
 
-    &:before {
-        content: "";
-        display: block;
-        -ms-flex: 1;
-        flex: 1;
-        height: 2px;
-        opacity: .1;
-        background-color: currentColor;
+    &.title-size-small {
+        @apply text-xl;
+    }
+
+    &.title-size-normal {
+        @apply text-2xl;
+    }
+
+    &.title-size-large {
+        @apply text-3xl;
+    }
+
+    &.title-size-xlarge {
+        @apply text-4xl;
+    }
+
+    &.title-size-xxlarge {
+        @apply text-5xl;
     }
 }

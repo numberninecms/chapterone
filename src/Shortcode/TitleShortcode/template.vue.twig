@@ -1,6 +1,15 @@
-{# template admin #}
 {% verbatim %}
-<component :is="parameters.tag" :style="[parameters.color ? {color: parameters.color} : {}]" class="title title-center">
+<component
+    :is="parameters.tag"
+    :style="[{
+        color: parameters.color,
+    }]"
+    class="title"
+    :class="[
+        'title-style-' + parameters.style,
+        'title-size-' + parameters.size,
+    ]"
+>
     <span>{{ parameters.text }}</span>
 </component>
 {% endverbatim %}

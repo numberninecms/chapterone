@@ -1,4 +1,6 @@
-{# template frontend #}
-<{{ tag }}{% if color %} style="color: {{ color }}"{% endif %} class="title title-center">
+{% set title_color = color ? 'style="color:' ~ color ~ '"' : '' %}
+{% set title_style = 'title-style-' ~ style %}
+{% set title_size = 'title-size-' ~ size %}
+<{{ tag }} {{ title_color }} class="title {{ title_style }} {{ title_size }}">
 <span>{{ text }}</span>
 </{{ tag }}>
