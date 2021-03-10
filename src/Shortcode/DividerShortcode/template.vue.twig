@@ -1,5 +1,15 @@
 {% verbatim %}
-<div class="flex" :class="{'justify-start': parameters.align === 'left', 'justify-center': parameters.align === 'center', 'justify-end': parameters.align === 'right'}">
-    <div class="divider" :style="{height: parameters.height+'px', maxWidth: parameters.fullWidth ? '100%' : parameters.width+'px', marginBottom: parameters.margin+'em', marginTop: parameters.margin+'em'}"></div>
+<div
+    class="flex"
+    :class="'justify-' + parameters.align.replace('left', 'start').replace('right', 'end')">
+    <div
+        class="divider"
+        :style="{
+            height: parameters.height+'px',
+            maxWidth: parameters.fullWidth ? '100%' : parameters.width+'px',
+            margin: parameters.margin,
+            backgroundColor: parameters.color
+        }">
+    </div>
 </div>
 {% endverbatim %}

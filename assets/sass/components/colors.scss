@@ -54,14 +54,12 @@
     --color-tertiary-h: var(--color-dark-blue-h);
     --color-tertiary-s: var(--color-dark-blue-s);
     --color-tertiary-l: var(--color-dark-blue-l);
-    --color-tertiary-hsl: var(--color-tertiary-h), var(--color-tertiary-s), var(--color-tertiary-l);
     --color-tertiary: rgb(var(--color-tertiary-rgb));
 
     --color-quaternary-rgb: var(--color-dark-gray-rgb);
     --color-quaternary-h: var(--color-dark-gray-h);
     --color-quaternary-s: var(--color-dark-gray-s);
     --color-quaternary-l: var(--color-dark-gray-l);
-    --color-quaternary-hsl: var(--color-quaternary-h), var(--color-quaternary-s), var(--color-quaternary-l);
     --color-quaternary: rgb(var(--color-quaternary-rgb));
 
     --color-light-rgb: 243, 243, 243;
