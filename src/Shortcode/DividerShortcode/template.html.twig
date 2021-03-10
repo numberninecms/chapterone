@@ -1,3 +1,11 @@
-<div class="flex {{ flexAlign }}">
-    <div class="divider"{{ attributes|raw }}></div>
+{% set flex_align = 'justify-' ~ align|replace({'left': 'start', 'right': 'end'}) %}
+{% set style_height = height != 3 ? 'height:' ~ height ~ 'px;' %}
+{% set style_max_width = not full_width ? 'max-width:' ~ width ~ 'px;' %}
+{% set style_margin = margin != '20px 0' ? 'margin:' ~ margin ~ ';' %}
+{% set style_background_color = color ? 'background-color:' ~ color ~ ';' %}
+
+<div class="flex {{ flex_align }}">
+    <div class="divider {{ full_width ? 'max-w-full' }}"
+         style="{{ style_height }} {{ style_max_width }} {{ style_margin }} {{ style_background_color }}">
+    </div>
 </div>
