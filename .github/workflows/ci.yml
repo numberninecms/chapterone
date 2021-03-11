@@ -52,6 +52,8 @@ jobs:
         needs: test_php
 
         steps:
+            -   uses: actions/checkout@v2
+
             -   name: Install node packages
                 run: yarn install
 
