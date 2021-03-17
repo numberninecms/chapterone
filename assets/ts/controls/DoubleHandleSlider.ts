@@ -77,8 +77,8 @@ export default class DoubleHandleSlider {
         });
 
         this.sliderControl.closest('form')!.onsubmit = () => {
-            const min = this.sliderParent.querySelector('.nouislider-control-min')! as HTMLInputElement;
-            const max = this.sliderParent.querySelector('.nouislider-control-max')! as HTMLInputElement;
+            const min = this.sliderParent.querySelector('.nouislider-control-min') as HTMLInputElement;
+            const max = this.sliderParent.querySelector('.nouislider-control-max') as HTMLInputElement;
 
             if (parseInt(min.value, 10) === Math.floor(this.sliderControl?.noUiSlider.options.range.min as number)) {
                 min.parentNode?.removeChild(min);

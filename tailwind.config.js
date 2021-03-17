@@ -11,7 +11,10 @@ function dynamicHsl(h, s, l) {
 }
 
 module.exports = {
-    purge: [],
+    purge: [
+        './src/**/*.twig',
+        './assets/**/*.{js,jsx,ts,tsx,vue}',
+    ],
     theme: {
         screens: {
             sm: '425px',

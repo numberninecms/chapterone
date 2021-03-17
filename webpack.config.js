@@ -7,7 +7,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 Encore
     .setOutputPath('src/Resources/public/build/')
     .setPublicPath('/bundles/numberninechapterone/build')
-    .setManifestKeyPrefix('/bundles/numberninechapterone/build/')
+    .setManifestKeyPrefix('bundles/numberninechapterone/build/')
 
     .addEntry('main', './assets/ts/index.ts')
     .addEntry('product', './assets/ts/product.ts')
@@ -32,14 +32,12 @@ Encore
     })
     .enablePostCssLoader((options) => {
         options.postcssOptions = {
-            plugins: [
-                require('postcss-import'),
-                require('tailwindcss'),
-                require('autoprefixer'),
-            ]
+            plugins: {
+                '@tailwindcss/jit': {},
+                autoprefixer: {},
+            }
         }
     })
-    .autoProvidejQuery()
 ;
 
 module.exports = Encore.getWebpackConfig();
