@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const path = require('path');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
@@ -7,7 +8,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 Encore
     .setOutputPath('src/Resources/public/build/')
     .setPublicPath('/bundles/numberninechapterone/build')
-    .setManifestKeyPrefix('bundles/numberninechapterone/build/')
+    .setManifestKeyPrefix('build/')
 
     .addEntry('main', './assets/ts/index.ts')
     .addEntry('product', './assets/ts/product.ts')
@@ -37,6 +38,11 @@ Encore
                 autoprefixer: {},
             }
         }
+    })
+    .configureDevServerOptions(options => {
+        options.https = true;
+        options.http2 = true;
+        options.port = 9005;
     })
 ;
 

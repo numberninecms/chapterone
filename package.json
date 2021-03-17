@@ -54,6 +54,7 @@
     },
     "scripts": {
         "dev": "encore dev",
+        "dev-server": "encore dev-server --port 9005",
         "watch": "encore dev --watch",
         "build": "encore production"
     },
