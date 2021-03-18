@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+    node:
+        container_name: numbernine_chapterone
+        image: node:15-alpine
+        command: yarn dev-server
+        user: '1000:1000'
+        ports:
+            - 9005:9005
+        working_dir: /srv/app/
+        restart: unless-stopped
+        volumes:
+            - ./:/srv/app/
