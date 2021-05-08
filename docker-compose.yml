@@ -1,13 +1,10 @@
 version: "3.8"
 
 services:
-    node:
-        container_name: numbernine_chapterone
+    numberninecms_chapterone:
         image: node:15-alpine
-        command: yarn dev-server
+        command: yarn encore dev-server --port 9005 --keep-public-path
         user: '1000:1000'
-        ports:
-            - 9005:9005
         working_dir: /srv/app/
         restart: unless-stopped
         volumes:

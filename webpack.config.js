@@ -40,9 +40,7 @@ Encore
         }
     })
     .configureDevServerOptions(options => {
-        options.https = true;
-        options.http2 = true;
-        options.port = 9005;
+        options.firewall = false;
     })
 ;
 
