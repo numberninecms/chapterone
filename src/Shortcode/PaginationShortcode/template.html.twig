@@ -1,4 +1,4 @@
-{% if paginator %}
+{% if paginator and paginator.lastPage > 1 %}
     <div class="pagination">
         {% for i in 1..paginator.lastPage %}
             <a href="{{ N9_page(i) }}"{% if paginator.currentPage == i %} class="active"{% endif %}>{{ i }}</a>
