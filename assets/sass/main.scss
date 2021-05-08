@@ -26,23 +26,9 @@
 html {
     background-color: white;
 }
-//
-//.light, .light p, .light td, .light a {
-//    color: var(--dark);
-//}
-//
-//.dark, .dark p, .dark td, .dark a {
-//    color: var(--light);
-//}
-//
-//.light a {
-//    &:hover {
-//        color: rgba(var(--dark-rgb), 0.75);
-//    }
-//}
-//
-//.dark a {
-//    &:hover {
-//        color: rgba(var(--light-rgb), 0.75);
-//    }
-//}
+
+aside {
+    > div:not(:last-child) {
+        @apply mb-5;
+    }
+}
