@@ -86,7 +86,7 @@ class Comments implements ComponentInterface, EventSubscriberInterface
         $comment->setContentEntity($this->currentEntity);
 
         return $this->formFactory->createBuilder(CommentFormType::class, $comment)
-            ->add('post', SubmitType::class)
+            ->add('submit', SubmitType::class)
             ->getForm();
     }
 
