@@ -12,6 +12,16 @@ $titleFont: $fallbackFont;
 $textFont: $fallbackFont;
 $titleColor: var(--color-quaternary);
 
+@layer base {
+    .text-header {
+        @apply font-light mb-1;
+    }
+}
+
+.text-header-big {
+    @apply text-header text-7xl;
+}
+
 h1 {
     font-size: 2.25rem;
 }
@@ -29,6 +39,7 @@ h4 {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    @apply text-header;
     font-family: $titleFont;
     color: $titleColor;
 

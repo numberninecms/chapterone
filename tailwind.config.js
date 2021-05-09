@@ -11,6 +11,7 @@ function dynamicHsl(h, s, l) {
 }
 
 module.exports = {
+    mode: 'jit',
     purge: [
         './src/**/*.twig',
         './assets/**/*.{js,jsx,ts,tsx,vue}',

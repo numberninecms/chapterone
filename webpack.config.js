@@ -34,7 +34,7 @@ Encore
     .enablePostCssLoader((options) => {
         options.postcssOptions = {
             plugins: {
-                '@tailwindcss/jit': {},
+                tailwindcss: {},
                 autoprefixer: {},
             }
         }

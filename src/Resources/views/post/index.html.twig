@@ -8,10 +8,15 @@ This is the default template used when no other template exists or when homepage
     <div class="container standard-container">
         <div class="grid grid-cols-4 gap-5 w-full">
             <main class="blog-main col-span-3">
-                {% for post in entities %}
-                    {{ N9_component('Post/PostCard', {post: post}) }}
-                {% endfor %}
-                {{ N9_shortcode('[pagination]') }}
+                {% if entities|length > 0 %}
+                    {% for post in entities %}
+                        {{ N9_component('Post/PostCard', {post: post}) }}
+                    {% endfor %}
+                    {{ N9_shortcode('[pagination]') }}
+                {% else %}
+                    <h2>Blog is empty!</h2>
+                    <p>This blog hasn't any article at the moment.</p>
+                {% endif %}
             </main>
             <aside class="blog-sidebar">
                 {{ N9_area('blog_sidebar') }}

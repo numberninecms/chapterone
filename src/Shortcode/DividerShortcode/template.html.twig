@@ -1,8 +1,18 @@
 {% set flex_align = 'justify-' ~ align|replace({'left': 'start', 'right': 'end'}) %}
 {% set style_height = height != 3 ? 'height:' ~ height ~ 'px;' %}
 {% set style_max_width = not full_width ? 'max-width:' ~ width ~ 'px;' %}
-{% set style_margin = margin != '20px 0' ? 'margin:' ~ margin ~ ';' %}
 {% set style_background_color = color ? 'background-color:' ~ color ~ ';' %}
+
+{% if margin != '20px 0' %}
+    {% if 'px' not in margin %}
+        {% set formatted_margin = margin ~ 'em' %}
+        {% set style_margin = 'margin-top:' ~ formatted_margin ~ '; margin-bottom:' ~ formatted_margin ~ ';' %}
+    {% else %}
+        {% set style_margin = 'margin:' ~ margin ~ ';' %}
+    {% endif %}
+{% else %}
+    {% set style_margin = '' %}
+{% endif %}
 
 <div class="flex {{ flex_align }}">
     <div class="divider {{ full_width ? 'max-w-full' }}"
