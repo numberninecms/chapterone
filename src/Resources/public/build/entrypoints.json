@@ -2,34 +2,32 @@
   "entrypoints": {
     "main": {
       "js": [
-        "/bundles/numberninechapterone/build/runtime.js",
-        "/bundles/numberninechapterone/build/vendors-node_modules_jquery_dist_jquery_js-node_modules_photoswipe_dist_default-skin_default--9484c9.js",
-        "/bundles/numberninechapterone/build/main.js"
+        "/bundles/numberninechapterone/build/runtime.ddd72fd3.js",
+        "/bundles/numberninechapterone/build/755.f5cf308f.js",
+        "/bundles/numberninechapterone/build/main.48c5f92d.js"
       ],
       "css": [
-        "/bundles/numberninechapterone/build/vendors-node_modules_photoswipe_dist_default-skin_default-skin_css-node_modules_photoswipe_di-1030fa.css",
-        "/bundles/numberninechapterone/build/main.css"
+        "/bundles/numberninechapterone/build/main.31186f25.css"
       ]
     },
     "product": {
       "js": [
-        "/bundles/numberninechapterone/build/runtime.js",
-        "/bundles/numberninechapterone/build/vendors-node_modules_flickity-as-nav-for_as-nav-for_js-node_modules_flickity_css_flickity_css-ce5451.js",
-        "/bundles/numberninechapterone/build/product.js"
+        "/bundles/numberninechapterone/build/runtime.ddd72fd3.js",
+        "/bundles/numberninechapterone/build/533.0d7fa4c2.js",
+        "/bundles/numberninechapterone/build/product.9067a0d5.js"
       ],
       "css": [
-        "/bundles/numberninechapterone/build/vendors-node_modules_photoswipe_dist_default-skin_default-skin_css-node_modules_photoswipe_di-1030fa.css",
-        "/bundles/numberninechapterone/build/product.css"
+        "/bundles/numberninechapterone/build/product.3c397af4.css"
       ]
     },
     "shop": {
       "js": [
-        "/bundles/numberninechapterone/build/runtime.js",
-        "/bundles/numberninechapterone/build/vendors-node_modules_axios_index_js-node_modules_core-js_modules_web_dom-collections_iterator-28374f.js",
-        "/bundles/numberninechapterone/build/shop.js"
+        "/bundles/numberninechapterone/build/runtime.ddd72fd3.js",
+        "/bundles/numberninechapterone/build/187.6b8f8079.js",
+        "/bundles/numberninechapterone/build/shop.0b799aca.js"
       ],
       "css": [
-        "/bundles/numberninechapterone/build/shop.css"
+        "/bundles/numberninechapterone/build/shop.eac14588.css"
       ]
     }
   }
