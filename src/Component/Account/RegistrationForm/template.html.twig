@@ -3,8 +3,8 @@
     {{ form_row(form.email) }}
     {{ form_row(form.plainPassword) }}
 
-<p class="text-gray-500 mb-5"><small>{% trans with {'%path%': N9_path(PAGE_FOR_PRIVACY)} %}Your personal data will be used to support your experience throughout this website,
-            to manage access to your account, and for other purposes described in our <a href="%path%">privacy policy</a>.{% endtrans %}</small></p>
+    <p class="text-gray-500 mb-5"><small>{% trans with {'%path%': N9_path(PAGE_FOR_PRIVACY)} %}Your personal data will be used to support your experience throughout this website,
+                to manage access to your account, and for other purposes described in our <a href="%path%">privacy policy</a>.{% endtrans %}</small></p>
 
-<button class="btn btn-primary">{{ 'Register'|trans }}</button>
+    <button class="btn btn-color-primary">{{ 'Register'|trans }}</button>
 {{ form_end(form) }}

@@ -1,5 +1,17 @@
 {% verbatim %}
-<a class="btn btn-primary" :href="parameters.link">
+<a class="btn"
+   :class="[
+       'btn-color-' + parameters.color,
+       'btn-style-' + parameters.style,
+       'btn-case-' + parameters.case,
+       'btn-size-' + parameters.size,
+       parameters.custom_class,
+       {
+           'btn-width-expand': parameters.expand,
+       },
+   ]"
+   :href="parameters.link"
+>
     {{ parameters.text }}
 </a>
 {% endverbatim %}

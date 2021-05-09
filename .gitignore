@@ -14,3 +14,5 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 .phpunit.result.cache
+
+docker-compose.override.yml

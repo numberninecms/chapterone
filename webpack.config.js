@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const path = require('path');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
@@ -7,11 +8,11 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 Encore
     .setOutputPath('src/Resources/public/build/')
     .setPublicPath('/bundles/numberninechapterone/build')
-    .setManifestKeyPrefix('/bundles/numberninechapterone/build/')
+    .setManifestKeyPrefix('build/')
 
-    .addEntry('main', './assets/ts/index.ts', {preload: true, async: true})
-    .addEntry('product', './assets/ts/product.ts', {preload: true, async: true})
-    .addEntry('shop', './assets/ts/shop.ts', {preload: true, async: true})
+    .addEntry('main', './assets/ts/index.ts')
+    .addEntry('product', './assets/ts/product.ts')
+    .addEntry('shop', './assets/ts/shop.ts')
 
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
@@ -32,13 +33,15 @@ Encore
     })
     .enablePostCssLoader((options) => {
         options.postcssOptions = {
-            plugins: [
-                require('tailwindcss'),
-                require('autoprefixer'),
-            ]
+            plugins: {
+                tailwindcss: {},
+                autoprefixer: {},
+            }
         }
     })
-    .autoProvidejQuery()
+    .configureDevServerOptions(options => {
+        options.firewall = false;
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();

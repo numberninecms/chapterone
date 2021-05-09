@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block button_widget -%}
-    {%- if attr|length > 0 and attr.forgotten is same as(true) -%}
+    {%- if attr|length > 0 and attr.forgotten is defined and attr.forgotten is same as(true) -%}
         <div class="flex items-center justify-between">
             {%- set attr = attr|merge({class: (attr.class|default('btn btn-primary'))|trim}) -%}
             {{- parent() -}}
