@@ -1,0 +1,10 @@
+name: Inline logo with menu
+content: |
+    [section backgroundSize="original" margin="0px" padding="30px 30px 30px 30px" color="light"]
+        [flex_row justify="between" align="center" margin="10px auto 10px auto"]
+            [link href="/" title="NumberNine - Every good business needs a good CMS software"]
+                [image fromTitle="NumberNine Logo" maxWidth="358" maxHeight="131" alt="NumberNine - Every good business needs a good CMS software"/]
+            [/link]
+            [menu id="2"/]
+        [/flex_row]
+    [/section]

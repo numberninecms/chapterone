@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+    numberninecms_chapterone:
+        image: node:15-alpine
+        environment:
+            NODE_ENV: development
+        command: yarn encore dev-server --port 9005 --keep-public-path
+        user: '1000:1000'
+        working_dir: /srv/app/
+        restart: unless-stopped
+        volumes:
+            - ./:/srv/app/

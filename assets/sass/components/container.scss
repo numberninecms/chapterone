@@ -7,8 +7,10 @@
  * file that was distributed with this source code.
  */
 
-.standard-container {
-    @apply mx-auto flex;
+@layer components {
+    .standard-container {
+        @apply mx-auto flex;
+    }
 }
 
 .justified-container {

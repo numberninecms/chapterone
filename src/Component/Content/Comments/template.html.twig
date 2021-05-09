@@ -27,7 +27,10 @@
 
     <div id="post-comment-form">
         <h3>{{ 'Post a comment'|trans }}</h3>
-        {{ form(form) }}
+        {{ form_start(form) }}
+            {{ form_row(form.content) }}
+            {{ form_row(form.submit, {attr: {class: 'btn btn-color-primary'}}) }}
+        {{ form_end(form) }}
         <a href="" id="comment_form_cancel_reply">Cancel reply</a>
     </div>
 

@@ -8,27 +8,38 @@
  */
 
 $fallbackFont: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$titleFont: 'Oxygen', $fallbackFont;
-$textFont: 'Heebo', $fallbackFont;
-$titleColor: var(--quaternary);
+$titleFont: $fallbackFont;
+$textFont: $fallbackFont;
+$titleColor: var(--color-quaternary);
+
+@layer base {
+    .text-header {
+        @apply font-light mb-1;
+    }
+}
+
+.text-header-big {
+    @apply text-header text-7xl;
+}
 
 h1 {
-    font-size: 2.25em;
+    font-size: 2.25rem;
 }
 
 h2 {
-    font-size: 1.875em;
+    font-size: 1.875rem;
 }
 
 h3 {
-    font-size: 1.25em;
+    font-size: 1.25rem;
 }
 
 h4 {
-    font-size: 1.125em;
+    font-size: 1.125rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
+    @apply text-header;
     font-family: $titleFont;
     color: $titleColor;
 
@@ -39,9 +50,21 @@ h1, h2, h3, h4, h5, h6 {
 
 html {
     font-family: $textFont;
-    color: var(--light-gray);
+    color: var(--color-light-gray);
 }
 
 a {
-    color: var(--primary);
+    color: var(--color-primary);
+}
+
+.dark {
+    @apply text-light;
+
+    @at-root a#{&}, .dark a {
+        @apply text-primary-100 transition-colors duration-300;
+
+        &:hover {
+            @apply text-light;
+        }
+    }
 }

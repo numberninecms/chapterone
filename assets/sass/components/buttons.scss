@@ -7,29 +7,16 @@
  * file that was distributed with this source code.
  */
 
-.btn {
-    @apply font-bold py-2 px-4;
-}
-
-.btn-primary {
-    @apply text-white;
-    background-color: var(--primary);
-
-    &:hover {
-        background-color: rgba(var(--primary-rgb), 0.8);
-    }
-}
-
 .btn-outline {
     @apply border-2 bg-transparent;
 
     &.btn-primary {
-        border-color: var(--primary);
-        color: var(--primary);
+        border-color: var(--color-primary);
+        color: var(--color-primary);
 
         &:hover {
             @apply bg-blue-500 text-white;
-            background-color: var(--primary);
+            background-color: var(--color-primary);
             color: white;
         }
     }
