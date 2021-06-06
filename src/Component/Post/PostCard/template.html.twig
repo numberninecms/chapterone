@@ -1,5 +1,6 @@
-<div class="post-card grid grid-cols-{{ post.featuredImage ? 3 : 2 }}">
-    {% if post.featuredImage %}
+{% set has_featured_image = N9_has_relationship(post, 'featured_image') %}
+<div class="post-card grid grid-cols-{{ has_featured_image ? 3 : 2 }}">
+    {% if has_featured_image %}
         <div class="post-featured-image">
             <a href="{{ N9_entity_url(post) }}">
                 {{ N9_featured_image(post, 'medium') }}

@@ -7,7 +7,7 @@
     {{ N9_shortcode('[divider]') }}
     {{ N9_component('Post/Partial/PostMeta', {post: post}) }}
 
-    {% if post.featuredImage %}
+    {% if N9_has_relationship(post, 'featured_image') %}
         <div class="post-featured-image mb-5">
             {{ N9_featured_image(post, 'large') }}
         </div>
