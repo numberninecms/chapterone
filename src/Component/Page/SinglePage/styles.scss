@@ -7,18 +7,12 @@
  * file that was distributed with this source code.
  */
 
-.post {
-    .post-title {
+.page {
+    .page-title {
         @apply font-medium;
     }
 
-    .post-categories {
-        a {
-            @apply text-xs uppercase #{!important};
-        }
-    }
-
-    .post-featured-image {
+    .page-featured-image {
         @apply mb-5 flex h-96;
 
         img {
