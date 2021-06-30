@@ -7,9 +7,12 @@
     {{ N9_shortcode('[divider]') }}
 
     {% if N9_has_relationship(page, 'featured_image') %}
-        <div class="page-featured-image mb-5">
-            {{ N9_featured_image(page, 'original') }}
-        </div>
+        {% set featured_image = N9_featured_image(page, 'original') %}
+        {% if featured_image %}
+            <div class="page-featured-image mb-5">
+                {{ N9_featured_image(page, 'original') }}
+            </div>
+        {% endif %}
     {% endif %}
 
     {{ page.content|raw }}

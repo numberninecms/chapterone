@@ -1,0 +1,11 @@
+<div class="
+    w-full
+    flex
+    flex-{{ orientation is defined and orientation == 'vertical' ? 'col' : 'row' }}
+    items-{{ align }}
+    justify-{{ justify }}
+    container
+    standard-container"{{ styles|raw }}
+>
+    {{ content|raw }}
+</div>
