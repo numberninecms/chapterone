@@ -8,6 +8,6 @@ services:
         command: yarn encore dev-server --port 9005 --keep-public-path
         user: '1000:1000'
         working_dir: /srv/app/
-        restart: unless-stopped
+        restart: 'no'
         volumes:
             - ./:/srv/app/
