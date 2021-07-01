@@ -7,13 +7,13 @@
  * file that was distributed with this source code.
  */
 
-import noUiSlider, { Instance } from 'nouislider';
-import 'nouislider/distribute/nouislider.css';
+import noUiSlider, { target } from 'nouislider';
+import 'nouislider/dist/nouislider.min.css';
 import { INumberFormatter } from '../commerce/INumberFormatter';
 import SimpleRange from './SimpleRange';
 
 export default class DoubleHandleSlider {
-    private readonly sliderControl: Instance | null;
+    private readonly sliderControl: target | null;
     private readonly sliderParent: HTMLElement;
     private numberFormatter: INumberFormatter;
     private sliderRange: SimpleRange;
@@ -25,7 +25,7 @@ export default class DoubleHandleSlider {
         if (typeof selector === 'string') {
             this.sliderControl = document.querySelector(selector);
         } else {
-            this.sliderControl = selector as Instance;
+            this.sliderControl = selector as target;
         }
 
         if (!this.sliderControl) {
@@ -62,13 +62,13 @@ export default class DoubleHandleSlider {
             step: 1,
         });
 
-        this.sliderControl.noUiSlider.on('update', (values) => {
+        this.sliderControl.noUiSlider?.on('update', (values) => {
             this.sliderParent.querySelector('.nouislider-label .from')!.innerHTML = this.numberFormatter.format(
-                values[0],
+                values[0] as number,
                 this.sliderControl?.attributes.getNamedItem('data-unit')?.value,
             );
             this.sliderParent.querySelector('.nouislider-label .to')!.innerHTML = this.numberFormatter.format(
-                values[1],
+                values[1] as number,
                 this.sliderControl?.attributes.getNamedItem('data-unit')?.value,
             );
 
@@ -80,11 +80,11 @@ export default class DoubleHandleSlider {
             const min = this.sliderParent.querySelector('.nouislider-control-min') as HTMLInputElement;
             const max = this.sliderParent.querySelector('.nouislider-control-max') as HTMLInputElement;
 
-            if (parseInt(min.value, 10) === Math.floor(this.sliderControl?.noUiSlider.options.range.min as number)) {
+            if (parseInt(min.value, 10) === Math.floor(this.sliderControl?.noUiSlider?.options.range.min as number)) {
                 min.parentNode?.removeChild(min);
             }
 
-            if (parseInt(max.value, 10) === Math.ceil(this.sliderControl?.noUiSlider.options.range.max as number)) {
+            if (parseInt(max.value, 10) === Math.ceil(this.sliderControl?.noUiSlider?.options.range.max as number)) {
                 max.parentNode?.removeChild(max);
             }
 
