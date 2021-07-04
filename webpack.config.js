@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const WatchExternalFilesPlugin = require('webpack-watch-files-plugin').default;
 const path = require('path');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
@@ -39,6 +40,13 @@ Encore
             }
         }
     })
+    .addPlugin(new WatchExternalFilesPlugin({
+        files: [
+            './src/**/*.twig',
+            './assets/sass/purge_safelist.txt',
+        ],
+        verbose: true
+    }))
     .configureDevServerOptions(options => {
         options.firewall = false;
     })

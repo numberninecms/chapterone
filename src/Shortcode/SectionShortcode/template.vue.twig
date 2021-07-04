@@ -6,7 +6,7 @@
         class="section-background"
         :style="{
             backgroundColor: parameters.backgroundColor,
-            backgroundImage: 'url(' + parameters.background + ')',
+            backgroundImage: 'url(' + computed.background?.path + ')',
             backgroundPosition: parameters.backgroundPosition
         }">
     </div>
