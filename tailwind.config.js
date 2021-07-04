@@ -13,6 +13,7 @@ function dynamicHsl(h, s, l) {
 module.exports = {
     mode: 'jit',
     purge: [
+        './assets/sass/purge_safelist.txt',
         './src/**/*.twig',
         './assets/**/*.{js,jsx,ts,tsx,vue}',
     ],
