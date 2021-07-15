@@ -1,3 +1,10 @@
 {% verbatim %}
-<div style="padding: 10px">{{ computed.selectedMenuName || 'Select a menu' }}</div>
+<div>
+    <div v-if="!computed.id">Select a menu</div>
+    <ul v-else class="menu">
+        <li v-for="item in computed.id.menuItems" :key="item.uid" class="menu-item menu-item-top-level">
+            <a href="">{{ item.title }}</a>
+        </li>
+    </ul>
+</div>
 {% endverbatim %}
