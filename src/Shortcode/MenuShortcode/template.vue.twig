@@ -1,7 +1,7 @@
 {% verbatim %}
-<div>
+<div class="flex items-center">
     <div v-if="!computed.id">Select a menu</div>
-    <ul v-else class="menu">
+    <ul v-else class="menu" :class="`menu-${parameters.style}`">
         <li v-for="item in computed.id.menuItems" :key="item.uid" class="menu-item menu-item-top-level">
             <a href="">{{ item.title }}</a>
         </li>
