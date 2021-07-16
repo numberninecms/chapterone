@@ -8,69 +8,101 @@
  */
 
 .menu {
-    @apply flex flex-row p-3;
+    &.menu-main {
+        @apply flex flex-row p-3;
 
-    .menu-item-top-level {
-        @apply py-3 px-2 text-quaternary text-sm;
+        .menu-item-top-level {
+            @apply py-3 px-2 text-sm;
 
-        > a {
-            @apply uppercase font-bold text-quaternary relative py-3;
-
-            &:before {
-                @apply absolute top-0 w-0 transition-all duration-300 opacity-0;
-                content: " ";
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: var(--color-primary);
-                height: 3px;
-            }
-        }
-
-        &:hover {
             > a {
+                @apply uppercase font-bold text-quaternary relative py-3;
+
+                @at-root .dark .menu.menu-main .menu-item-top-level > a {
+                    @apply text-primary-100 transition-colors duration-300;
+                }
+
                 &:before {
-                    opacity: 1;
-                    width: 100%;
+                    @apply absolute top-0 w-0 transition-all duration-300 opacity-0;
+                    content: " ";
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: var(--color-primary);
+                    height: 3px;
                 }
             }
 
-            .menu-dropdown {
-                @apply flex;
-            }
-        }
-    }
-
-    .menu-item:not(.menu-item-top-level) {
-        @apply flex flex-1;
-
-        > a {
-            @apply text-secondary w-full flex-1 p-2;
-
             &:hover {
-                @apply bg-primary text-white;
-            }
-        }
-    }
+                > a {
+                    &:before {
+                        opacity: 1;
+                        width: 100%;
+                    }
+                }
 
-    .menu-dropdown {
-        @apply absolute z-10 flex-col bg-white text-quaternary text-sm border border-gray-400 shadow mt-3 hidden;
-    }
-
-    .mega-menu {
-        .menu-dropdown {
-            @apply flex-row;
-
-            ul {
-                @apply flex flex-col flex-grow;
+                .menu-dropdown {
+                    @apply flex;
+                }
             }
         }
 
-        .menu-item-col-header {
-            @apply flex flex-col flex-grow;
+        .menu-item:not(.menu-item-top-level) {
+            @apply flex flex-1;
 
             > a {
-                @apply uppercase font-bold;
+                @apply text-secondary w-full flex-1 p-2;
+
+                &:hover {
+                    @apply bg-primary text-white;
+                }
             }
         }
+
+        .menu-dropdown {
+            @apply absolute z-10 flex-col bg-white text-quaternary text-sm border border-gray-400 shadow mt-3 hidden;
+        }
+
+        .mega-menu {
+            .menu-dropdown {
+                @apply flex-row;
+
+                ul {
+                    @apply flex flex-col flex-grow;
+                }
+            }
+
+            .menu-item-col-header {
+                @apply flex flex-col flex-grow;
+
+                > a {
+                    @apply uppercase font-bold;
+                }
+            }
+        }
+    }
+
+    &.menu-top-level-with-separators {
+        @apply flex items-center text-sm;
+
+        .menu-item-top-level {
+            @apply relative mr-2;
+
+            + .menu-item-top-level {
+                @apply ml-2;
+
+                a:after {
+                    @apply border-primary;
+                    position: absolute;
+                    border-left: 1px solid;
+                    left: -0.5rem;
+                    top: 25%;
+                    height: 60%;
+                    content: '';
+                }
+            }
+        }
+    }
+
+    &.menu-top-level-without-separators {
+        @apply flex items-center gap-3 uppercase tracking-wider text-xs font-semibold;
     }
 }
