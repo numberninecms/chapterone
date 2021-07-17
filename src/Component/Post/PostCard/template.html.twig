@@ -1,14 +1,14 @@
 {% set has_featured_image = N9_has_relationship(post, 'featured_image') %}
-<div class="post-card grid grid-cols-{{ has_featured_image ? 3 : 2 }}">
+<div class="post-card grid grid-cols-1 {{ has_featured_image ? 'lg:grid-cols-3' : 'lg:grid-cols-2' }}">
     {% if has_featured_image %}
-        <div class="post-featured-image">
+        <div class="post-featured-image col-span-1 h-48">
             <a href="{{ N9_entity_url(post) }}">
                 {{ N9_featured_image(post, 'medium') }}
             </a>
         </div>
     {% endif %}
 
-    <div class="px-6 col-span-2">
+    <div class="lg:px-6 col-span-1 lg:col-span-2">
         <div class="post-categories">
             {{ N9_terms_links(post, 'category') }}
         </div>

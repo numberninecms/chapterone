@@ -6,11 +6,11 @@ This is the default template used when no other template exists or when homepage
 
 {% block body %}
     <div class="container standard-container">
-        <div class="grid grid-cols-4 gap-5">
-            <main class="post-main col-span-3">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-5 px-3 lg:px-0">
+            <main class="post-main col-span-1 lg:col-span-3">
                 {{ N9_component('Post/SinglePost', {post: entity}) }}
             </main>
-            <aside class="post-sidebar">
+            <aside class="post-sidebar col-span-1">
                 {{ N9_area('blog_sidebar') }}
             </aside>
         </div>
