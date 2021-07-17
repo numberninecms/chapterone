@@ -28,11 +28,10 @@
     }
 
     .post-featured-image {
-        @apply relative;
-        padding-bottom: 66%;
+        @apply relative h-72;
 
         img {
-            @apply absolute w-full h-full object-cover;
+            @apply absolute w-full h-full object-cover object-top;
         }
     }
 
