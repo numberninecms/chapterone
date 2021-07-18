@@ -10,4 +10,4 @@ services:
         working_dir: /srv/app/
         restart: 'no'
         volumes:
-            - ./:/srv/app/
+            - ./:/srv/app
