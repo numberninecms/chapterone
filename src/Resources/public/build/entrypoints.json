@@ -7,7 +7,7 @@
         "/bundles/numberninechapterone/build/main.48c5f92d.js"
       ],
       "css": [
-        "/bundles/numberninechapterone/build/main.31186f25.css"
+        "/bundles/numberninechapterone/build/main.7d97d5ff.css"
       ]
     },
     "product": {
@@ -17,17 +17,17 @@
         "/bundles/numberninechapterone/build/product.9067a0d5.js"
       ],
       "css": [
-        "/bundles/numberninechapterone/build/product.3c397af4.css"
+        "/bundles/numberninechapterone/build/product.3b666e5e.css"
       ]
     },
     "shop": {
       "js": [
         "/bundles/numberninechapterone/build/runtime.ddd72fd3.js",
-        "/bundles/numberninechapterone/build/187.6b8f8079.js",
-        "/bundles/numberninechapterone/build/shop.0b799aca.js"
+        "/bundles/numberninechapterone/build/738.257b25b1.js",
+        "/bundles/numberninechapterone/build/shop.d79b2e2a.js"
       ],
       "css": [
-        "/bundles/numberninechapterone/build/shop.eac14588.css"
+        "/bundles/numberninechapterone/build/shop.01cf3cad.css"
       ]
     }
   }
