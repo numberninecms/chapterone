@@ -49,8 +49,6 @@ jobs:
 
         runs-on: ubuntu-20.04
 
-        needs: test_php
-
         steps:
             -   uses: actions/checkout@v2
 
