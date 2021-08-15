@@ -2,11 +2,11 @@
 
 {% block body %}
     <div class="container standard-container">
-        <main class="page-main w-full">
+        <main class="page-main w-full px-3">
             <h1>My account</h1>
-            <div class="grid grid-cols-2 gap-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                    <div class="login pr-5 border-r border-gray-300">
+                    <div class="login pb-10 border-b border-gray-300 md:border-b-0 md:border-r md:pb-0 md:pr-5">
                         <h2>Login</h2>
                         {{ N9_component('Account/LoginForm') }}
                     </div>
