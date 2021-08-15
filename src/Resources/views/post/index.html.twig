@@ -6,8 +6,8 @@ This is the default template used when no other template exists or when homepage
 
 {% block body %}
     <div class="container standard-container">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-5 w-full px-3 lg:px-0">
-            <main class="blog-main col-span-1 md:col-span-3">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-5 w-full px-3">
+            <main class="blog-main col-span-1 lg:col-span-3">
                 {% if entities|length > 0 %}
                     {% for post in entities %}
                         {{ N9_component('Post/PostCard', {post: post}) }}
