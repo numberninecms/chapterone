@@ -9,6 +9,10 @@
 
 .footer {
     @apply bg-secondary-900;
+
+    a {
+        @apply text-white hover:underline;
+    }
 }
 
 .footer-large {
