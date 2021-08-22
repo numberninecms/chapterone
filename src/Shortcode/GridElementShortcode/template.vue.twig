@@ -1,6 +1,6 @@
 {% verbatim %}
 <div :class="[
-        'col-span-' + (parameters.span.toString().match(/1\/(\d+?)/) ? 12/parameters.span.toString().match(/1\/(\d+?)/)[1] : (parseInt(parameters.span) <= 12 ? parameters.span : 12)),
+        'col-span-' + parameters.span,
         'relative',
         {
             'p-3': children && children.length > 0,

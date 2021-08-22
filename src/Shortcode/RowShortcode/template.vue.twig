@@ -1,7 +1,0 @@
-{% apply spaceless %}
-    {% verbatim %}
-<div class="container mx-auto grid grid-cols-12 gap-3" :class="{'p-5': !(children && children.length > 0)}">
-    <PageBuilderComponent v-for="component in children" :key="component.id" :component="component" />
-</div>
-{% endverbatim %}
-{% endapply %}
