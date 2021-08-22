@@ -1,0 +1,24 @@
+/*!
+ * This file is part of the NumberNine package.
+ *
+ * (c) William Arin <williamarin.dev@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+.left { @apply text-left; }
+img.left, table.left { @apply float-left m-3 ml-0; }
+
+.right { @apply text-right; }
+img.right, table.right { @apply float-right m-3 mr-0; }
+
+.center { @apply text-center; }
+img.center, table.center { @apply block mx-auto my-3; }
+
+.full { @apply text-justify; }
+img.full, table.full { @apply block mx-auto my-3; }
+
+.bold { @apply font-semibold; }
+.italic { @apply italic; }
+.underline { @apply underline; }
