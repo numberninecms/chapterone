@@ -10,7 +10,10 @@
             backgroundPosition: parameters.backgroundPosition
         }">
     </div>
-    <div class="section-content">
+    <div
+        class="section-content"
+        :class="parameters.container ? 'container mx-auto px-3' : ''"
+    >
         <PageBuilderComponent v-for="component in children" :key="component.id" :component="component" />
     </div>
 </section>

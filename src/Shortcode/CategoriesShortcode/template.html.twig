@@ -1,7 +1,7 @@
 <div>
     <h3>{{ title }}</h3>
     {% if categories|length > 0 %}
-        <ul class="list-unstyled">
+        <ul class="list-none">
             {% for category in categories %}
                 {% if not (not showIfEmpty and category.count == 0) %}
                     <li class="mb-2{% if term and term.id == category.term.id %} font-bold{% endif %}">

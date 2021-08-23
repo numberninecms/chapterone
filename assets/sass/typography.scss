@@ -38,33 +38,70 @@ h4 {
     font-size: 1.125rem;
 }
 
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.875rem;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    @apply text-header;
+    @apply text-header text-quaternary;
     font-family: $titleFont;
-    color: $titleColor;
+
+    @at-root .dark {
+        h1, h2, h3, h4, h5, h6 {
+            @apply text-white;
+        }
+    }
 
     a {
-        color: $titleColor;
+        @apply text-quaternary no-underline;
     }
 }
 
 html {
+    @apply text-secondary;
     font-family: $textFont;
-    color: var(--color-light-gray);
 }
 
 a {
-    color: var(--color-primary);
+    @apply text-primary underline;
+    text-underline-offset: 0.1em;
+    text-decoration-thickness: 0.075em;
+    text-decoration-color: rgba(var(--color-primary-rgb), 0.4);
+
+    &:hover {
+        @apply opacity-80;
+        text-decoration-color: rgba(var(--color-primary-rgb), 0.8);
+    }
+}
+
+ul {
+    @apply list-disc;
+}
+
+ol {
+    @apply list-decimal;
+}
+
+ul, ol {
+    &:not(.list-none) {
+        @apply pl-5;
+    }
 }
 
 .dark {
-    @apply text-light;
+    @apply text-white;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
 
     @at-root a#{&}, .dark a {
-        @apply text-primary-100 transition-colors duration-300;
+        @apply text-white;
+        text-decoration-color: rgba(255, 255, 255, 0.4);
 
         &:hover {
-            @apply text-light;
+            text-decoration-color: rgba(255, 255, 255, 0.8);
         }
     }
 }
