@@ -1,7 +1,7 @@
 <section class="section {{ color }}"{{ styles|raw }}>
     <div class="section-background"{{ backgroundStyles|raw }}>
     </div>
-    <div class="section-content">
+    <div class="section-content {{ container ? 'container mx-auto px-3' }}">
         {{ content|raw }}
     </div>
 </section>

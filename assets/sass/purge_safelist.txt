@@ -80,3 +80,6 @@ col-span-9
 col-span-10
 col-span-11
 col-span-12
+list-none
+list-disc
+list-decimal
