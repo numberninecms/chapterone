@@ -1,6 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
 const WatchExternalFilesPlugin = require('webpack-watch-files-plugin').default;
-const path = require('path');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
@@ -48,7 +47,8 @@ Encore
         verbose: true
     }))
     .configureDevServerOptions(options => {
-        options.firewall = false;
+        options.allowedHosts = 'all';
+        delete options.client;
     })
 ;
 
