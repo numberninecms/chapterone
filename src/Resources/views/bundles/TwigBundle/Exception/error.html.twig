@@ -1,0 +1,13 @@
+{% trans_default_domain 'ChapterOne' %}
+{% extends N9_base_template() %}
+
+{% block body %}
+    <div class="container standard-container">
+        <main class="px-3 mb-10">
+            <h1 class="text-header">{{ 'An error occured.'|trans }}</h1>
+            {{ N9_shortcode('[divider]') }}
+            <p class="text-xl mb-5">{{ "Something is broken. Please let us know what you were doing when this error occurred.\nWe will fix it as soon as possible. Sorry for any inconvenience caused."|trans|nl2br }}</p>
+            <p>{{ 'Error code: %1%'|trans({'%1%': status_code}) }}</p>
+        </main>
+    </div>
+{% endblock %}

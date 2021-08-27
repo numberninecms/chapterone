@@ -1,0 +1,12 @@
+{% trans_default_domain 'ChapterOne' %}
+{% extends N9_base_template() %}
+
+{% block body %}
+    <div class="container standard-container">
+        <main class="px-3 mb-10">
+            <h1 class="text-header">{{ 'Page not found.'|trans }}</h1>
+            {{ N9_shortcode('[divider]') }}
+            <p class="text-xl">{{ "We can't seem to find the page you're looking for."|trans }}</p>
+        </main>
+    </div>
+{% endblock %}

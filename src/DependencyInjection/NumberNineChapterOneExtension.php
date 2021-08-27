@@ -44,6 +44,19 @@ class NumberNineChapterOneExtension extends ConfigurableExtension implements Pre
 
             $container->prependExtensionConfig($name, $config);
         }
+
+        $paths = [];
+        $appPath = '%kernel.project_dir%/templates/bundles/TwigBundle';
+        $themePath = '%kernel.project_dir%/vendor/numberninecms/chapterone/src/Resources/views/bundles/TwigBundle';
+        /** @var string $projectDir */
+        $projectDir = $container->getParameter('kernel.project_dir');
+
+        if (is_dir(str_replace('%kernel.project_dir%', $projectDir, $appPath))) {
+            $paths[$appPath] = 'Twig';
+        }
+
+        $paths[$themePath] = 'Twig';
+        $container->loadFromExtension('twig', ['paths' => $paths]);
     }
 
     public function loadInternal(array $mergedConfig, ContainerBuilder $container): void
