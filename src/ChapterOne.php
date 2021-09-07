@@ -11,20 +11,15 @@
 
 namespace NumberNine\ChapterOne;
 
-use NumberNine\Annotation\Theme;
+use NumberNine\Attribute\Theme;
 use NumberNine\Model\Theme\AbstractTheme;
 
-/**
- * @Theme(
- *     name="ChapterOne",
- *     areas={
- *         "header": "Header",
- *         "blog_sidebar": "Blog sidebar",
- *         "shop_sidebar": "Shop sidebar",
- *         "footer": "Footer",
- *     }
- * )
- */
+#[Theme(name: 'ChapterOne', areas: [
+    'header' => 'Header',
+    'blog_sidebar' => 'Blog sidebar',
+    'shop_sidebar' => 'Shop sidebar',
+    'footer' => 'Footer'
+])]
 class ChapterOne extends AbstractTheme
 {
 }
