@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": "^8.1",
-        "numberninecms/cms": "^0.2 || ^0.3"
+        "numberninecms/cms": "^0.3"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.11",
