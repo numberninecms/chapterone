@@ -26,7 +26,7 @@ class SocialLinks implements ComponentInterface
 
     public function __construct(RequestStack $requestStack, SocialSharer $socialSharer)
     {
-        $this->request = $requestStack->getMasterRequest();
+        $this->request = $requestStack->getMainRequest();
         $this->socialSharer = $socialSharer;
     }
 
