@@ -1,6 +1,3 @@
-twig:
-    form_themes: ['@NumberNineChapterOne/form/tailwind_layout.html.twig']
-
 framework:
     assets:
         packages:
