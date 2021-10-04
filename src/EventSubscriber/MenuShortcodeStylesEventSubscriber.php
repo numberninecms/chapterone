@@ -27,10 +27,13 @@ final class MenuShortcodeStylesEventSubscriber implements EventSubscriberInterfa
 
     public function addMenuStyles(MenuShortcodeStyleEvent $event): void
     {
-        $event->setStyles([
-            'main' => 'Mega menu',
-            'top-level-with-separators' => 'Top level only with separators',
-            'top-level-without-separators' => 'Top level only without separators',
-        ]);
+        $event
+            ->setStyles([
+                'main' => 'Mega menu',
+                'top-level-with-separators' => 'Top level only with separators',
+                'top-level-without-separators' => 'Top level only without separators',
+            ])
+            ->setDefault('main')
+        ;
     }
 }
