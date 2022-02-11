@@ -28,6 +28,11 @@
     <div id="post-comment-form">
         <h3>{{ 'Post a comment'|trans }}</h3>
         {{ form_start(form) }}
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                {{ form_row(form.guestAuthorName) }}
+                {{ form_row(form.guestAuthorEmail) }}
+                {{ form_row(form.guestAuthorUrl) }}
+            {% endif %}
             {{ form_row(form.content) }}
             {{ form_row(form.submit, {attr: {class: 'btn btn-color-primary'}}) }}
         {{ form_end(form) }}
