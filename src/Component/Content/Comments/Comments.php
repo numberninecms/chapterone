@@ -12,52 +12,57 @@
 namespace NumberNine\ChapterOne\Component\Content\Comments;
 
 use Doctrine\ORM\EntityManagerInterface;
-use NumberNine\Annotation\Shortcode\Exclude;
 use NumberNine\Entity\Comment;
 use NumberNine\Entity\ContentEntity;
 use NumberNine\Entity\User;
 use NumberNine\Event\CurrentContentEntityEvent;
 use NumberNine\Form\Content\CommentFormType;
-use NumberNine\Model\Component\ComponentInterface;
+use NumberNine\Model\Component\AbstractFormComponent;
 use NumberNine\Model\Component\Features\ContentEntityPropertyTrait;
 use NumberNine\Repository\CommentRepository;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Event\ResponseEvent;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-class Comments implements ComponentInterface, EventSubscriberInterface
+class Comments extends AbstractFormComponent
 {
     use ContentEntityPropertyTrait;
 
-    private CommentRepository $commentRepository;
-    private FormFactoryInterface $formFactory;
-    private TokenStorageInterface $tokenStorage;
-    private EntityManagerInterface $entityManager;
     private ?ContentEntity $currentEntity = null;
+    protected array $supportedTemplates = ['@ChapterOne/post/single.html.twig'];
 
     public static function getSubscribedEvents(): array
     {
-        return [
-            ResponseEvent::class => 'processForm',
+        return array_merge(parent::getSubscribedEvents(), [
             CurrentContentEntityEvent::class => 'setCurrentEntity',
-        ];
+        ]);
     }
 
     public function __construct(
-        CommentRepository $commentRepository,
-        FormFactoryInterface $formFactory,
-        TokenStorageInterface $tokenStorage,
-        EntityManagerInterface $entityManager
+        private CommentRepository $commentRepository,
+        private FormFactoryInterface $formFactory,
+        private TokenStorageInterface $tokenStorage,
+        private EntityManagerInterface $entityManager,
+        private EventDispatcherInterface $eventDispatcher,
     ) {
-        $this->commentRepository = $commentRepository;
-        $this->formFactory = $formFactory;
-        $this->tokenStorage = $tokenStorage;
-        $this->entityManager = $entityManager;
+        parent::__construct($formFactory, $eventDispatcher);
+    }
+
+    public function setCurrentEntity(CurrentContentEntityEvent $event): void
+    {
+        $this->currentEntity = $event->getContentEntity();
+    }
+
+    public function getTemplateParameters(): array
+    {
+        return array_merge(parent::getTemplateParameters(), [
+            'comments' => $this->getComments(),
+        ]);
     }
 
     private function getComments(): array
@@ -69,56 +74,31 @@ class Comments implements ComponentInterface, EventSubscriberInterface
         return $this->commentRepository->findByContentEntityId((int)$this->contentEntity->getId());
     }
 
-    private function getForm(): FormView
+    protected function getForm(): FormInterface
     {
-        return $this->getFormObject()->createView();
-    }
+        if (!$this->form) {
+            $comment = new Comment();
+            $user = ($token = $this->tokenStorage->getToken()) !== null ? $token->getUser() : null;
 
-    private function getFormObject(): FormInterface
-    {
-        $comment = new Comment();
-        $user = $this->tokenStorage->getToken() !== null ? $this->tokenStorage->getToken()->getUser() : null;
+            if ($user instanceof User) {
+                $comment->setAuthor($user);
+            }
 
-        if ($user instanceof User) {
-            $comment->setAuthor($user);
+            $comment->setContentEntity($this->currentEntity);
+
+            $this->form = $this->formFactory->createBuilder(CommentFormType::class, $comment)
+                ->add('submit', SubmitType::class)
+                ->getForm();
         }
 
-        $comment->setContentEntity($this->currentEntity);
-
-        return $this->formFactory->createBuilder(CommentFormType::class, $comment)
-            ->add('submit', SubmitType::class)
-            ->getForm();
+        return $this->form;
     }
 
-    /**
-     * @Exclude
-     * @param ResponseEvent $event
-     */
-    public function processForm(ResponseEvent $event): void
+    protected function handleSubmittedAndValidForm(Request $request): Response
     {
-        $request = $event->getRequest();
+        $this->entityManager->persist($this->getForm()->getData());
+        $this->entityManager->flush();
 
-        $form = $this->getFormObject();
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->entityManager->persist($form->getData());
-            $this->entityManager->flush();
-
-            $event->setResponse(new RedirectResponse($request->getPathInfo()));
-        }
-    }
-
-    public function setCurrentEntity(CurrentContentEntityEvent $event): void
-    {
-        $this->currentEntity = $event->getContentEntity();
-    }
-
-    public function getTemplateParameters(): array
-    {
-        return [
-            'comments' => $this->getComments(),
-            'form' => $this->getForm(),
-        ];
+        return new RedirectResponse($request->getPathInfo());
     }
 }
