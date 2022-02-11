@@ -48,7 +48,7 @@ class Comments extends AbstractFormComponent
         private FormFactoryInterface $formFactory,
         private TokenStorageInterface $tokenStorage,
         private EntityManagerInterface $entityManager,
-        private EventDispatcherInterface $eventDispatcher,
+        EventDispatcherInterface $eventDispatcher,
     ) {
         parent::__construct($formFactory, $eventDispatcher);
     }
