@@ -64,8 +64,11 @@ class RegistrationForm extends AbstractFormComponent
         $response = $this->userAuthenticator->authenticateUser($user);
 
         /** @var RegistrationFormSuccessEvent $registrationFormSuccessEvent */
-        $registrationFormSuccessEvent = $this->eventDispatcher->dispatch(new RegistrationFormSuccessEvent($user, $response));
+        $registrationFormSuccessEvent = $this->eventDispatcher->dispatch(new RegistrationFormSuccessEvent(
+            $user,
+            $response,
+        ));
 
-        return $registrationFormSuccessEvent->getResponse();
+        return $registrationFormSuccessEvent->getResponse() ?? throw new \Exception();
     }
 }
