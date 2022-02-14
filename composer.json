@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": ">=8.1",
-        "numberninecms/cms": "^0.4"
+        "numberninecms/cms": "^0.4.1"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.11",
@@ -43,6 +43,10 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "phpro/grumphp": true
+        },
         "sort-packages": true
     },
     "scripts": {
